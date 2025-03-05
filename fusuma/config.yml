@@ -1,0 +1,26 @@
+swipe:
+  4:
+    up:
+      command: amixer set Master "2%+"; awesome-client "require('beautiful').volume.update()"
+    down:
+      command: amixer set Master "2%-"; awesome-client "require('beautiful').volume.update()"
+    left:
+      command: awesome-client "require('awful').tag.viewnext()"
+      interval: 1
+    right:
+      command: awesome-client "require('awful').tag.viewprev()"
+      interval: 1
+
+pinch:
+  in:
+    command: 'xdotool key ctrl+minus'
+  out:
+     command: 'xdotool key ctrl+plus'
+
+threshold:
+  swipe: 0
+  pinch: 0.2
+
+interval:
+  swipe: 0.2
+  pinch: 0.1

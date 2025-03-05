@@ -1,0 +1,31 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Colors
+ **/
+
+// Onedark
+
+* {
+    background:             #1E2127FF;
+    background-alt:         #282B31FF;
+    foreground:             #CCCCCCFF;
+    selected-foreground:    #FAEEEEFF;
+    selected:               #61AFEFFF;
+    active:                 #98C379FF;
+    urgent:                 #E06C75FF;
+}
+
+/*
+// Catpuccin
+* {
+    background:     #1E1D2FFF;
+    background-alt: #282839FF;
+    foreground:     #D9E0FAFF;
+    selected:       #7AA2F7FF;
+    active:         #ABE9B3FF;
+    urgent:         #F28FADFF;
+}
+*/

@@ -1,0 +1,64 @@
+format = """
+$time\
+[](fg:#2C313D bg:#384152)\
+$directory\
+[](bg:#4B566B fg:#384152)\
+$git_branch\
+$git_state\
+$git_status\
+[ ](fg:#4B566B)\
+$cmd_duration\
+$python\
+$character
+"""
+# $line_break\ (before `$python`)
+
+palette = "sk"
+add_newline = false
+command_timeout = 5000
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#2C313D fg:grey"
+format = '[ $time ]($style)'
+
+[directory]
+style = "bg:#384152 fg:orange"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+[git_branch]
+format = '[ $symbol$branch]($style)'
+style = "bg:#4B566B fg:green"
+
+[git_status]
+style = "bg:#4B566B fg:green"
+format = "[(*$conflicted$untracked$modified$staged$renamed$deleted) ($ahead_behind$stashed)]($style)"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[python]
+style = "fg:grey"
+format = '[(\($virtualenv\) )]($style)'
+
+[character]
+success_symbol = '[❯](orange)'
+error_symbol   = '[❯](orange)' # "[✗](red)"
+
+# ========== Colours ========== 
+
+[palettes.sk]
+blue = '#5FC8ED'
+orange = '#F29E54'
+red = '#FF0000'
+green = '#85ed13'
+grey = '#cccccc'
+

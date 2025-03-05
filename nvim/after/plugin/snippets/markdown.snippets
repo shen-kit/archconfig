@@ -1,0 +1,54 @@
+snippet ->
+	→ $0
+
+snippet --
+	— $0
+
+snippet <=
+	≤ $0
+
+snippet >=
+	≥ $0
+
+snippet <<
+	« $0
+
+snippet tzettel
+	---
+	created: `strftime("%Y-%m-%d, %H:%M")`
+	type: ${1:fleeting}
+	---
+	${2:tags}
+	source: ${3:links}
+	***
+
+ $4
+
+snippet tworkout
+  ---
+  start: $1
+  end: $2
+  focus:
+  - $3
+  ---
+  « [[+Fitness]]
+  ***
+
+  # Routine
+
+  ***
+
+  # Focus
+
+  - $3
+
+  ***
+
+  # Workouts
+
+  ## $0
+
+  | #   | sets      | reps  | exercise                                    | notes               |
+  | :-: | :-------: | :---: | ------------------------------------------- | ------------------- |
+
+
