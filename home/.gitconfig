@@ -1,0 +1,9 @@
+[user]
+	email = shenkit108+1@gmail.com
+	name = Shen-Kit Hia
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
+[credential]
+	helper = cache --timeout=10800
