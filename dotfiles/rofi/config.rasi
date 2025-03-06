@@ -9,8 +9,10 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun";
-    show-icons:                 true;
+	modi            : "drun";
+  show-icons      : true;
+  matching        : "fuzzy";
+  levenshtein-sort: false;
 }
 
 /*****----- Global Properties -----*****/
