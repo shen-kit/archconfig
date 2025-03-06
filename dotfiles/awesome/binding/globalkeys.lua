@@ -98,6 +98,8 @@ function _M.get()
       { description = "file explorer", group = "launch applications" }),
     awful.key({ modkey }, ";", function() awful.spawn("rofi-charpicker.sh") end,
       { description = "emoji selector", group = "launch applications" }),
+    awful.key({ modkey, "Shift" }, "p", function() awful.spawn("rofi-pass.sh") end,
+      { description = "emoji selector", group = "launch applications" }),
 
     -- layout
     awful.key({ modkey, altkey }, "k", function() awful.tag.incmwfact(0.05) end,
