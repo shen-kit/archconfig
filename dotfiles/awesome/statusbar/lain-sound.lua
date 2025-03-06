@@ -7,6 +7,7 @@
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- Wibox handling library
+local awful = require("awful")
 local lain = require("lain")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
@@ -32,5 +33,26 @@ Clone_widget_set.volume = lain.widget.alsa({
     widget:set_markup(disp)
   end
 })
+
+-- scroll to change volume, click to mute
+Clone_widget_set.volume.widget:buttons(
+  awful.util.table.join(
+    awful.button({}, 4, function()
+      os.execute(string.format("amixer -q set Master 2%%+"))
+      Clone_widget_set.volume.update()
+    end),
+    awful.button({}, 5, function()
+      os.execute(string.format("amixer -q set Master 2%%-"))
+      Clone_widget_set.volume.update()
+    end),
+    awful.button({}, 1, function()
+      os.execute(string.format("amixer -q set Master toggle"))
+      Clone_widget_set.volume.update()
+    end),
+    awful.button({}, 3, function()
+      awful.spawn.with_shell("flatpak run com.saivert.pwvucontrol")
+      Clone_widget_set.volume.update()
+    end)
+  ))
 
 Theme.volume = Clone_widget_set.volume
