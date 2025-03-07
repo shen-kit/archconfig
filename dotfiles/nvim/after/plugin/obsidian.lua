@@ -47,5 +47,11 @@ require('render-markdown').setup({
     ignore = {
       head_background = true,
     }
+  },
+  pipe_table = {
+    enabled = true,
+    preset = 'none', -- remove rounded corners
+    style = 'full',  -- include horizontal lines at top/bottom of table
+    cell = 'padded', -- use full visual width of cells, including concealed characters
   }
 })

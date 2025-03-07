@@ -10,7 +10,9 @@ require('mini.surround').setup({
   -- place surrounds on each line in blockwise mode
   respect_selection_type = true,
 })
-require('mini.bracketed').setup()
+require('mini.bracketed').setup({
+  buffer = { suffix = ' ' },
+})
 require('mini.bufremove').setup()
 require('mini.pairs').setup()
 require('mini.align').setup()
