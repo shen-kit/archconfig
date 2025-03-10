@@ -1,10 +1,13 @@
 -- ==========  OPTIONS ==========
 
-vim.opt.breakindentopt = "list:2" -- wrap to same indentation as bullet lists
+local opt = vim.opt
 
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
+opt.breakindentopt = "list:2" -- wrap to same indentation as bullet lists
+
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.expandtab = false
 
 -- ==========  KEYBINDS ==========
 
