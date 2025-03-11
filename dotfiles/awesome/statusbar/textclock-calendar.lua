@@ -1,8 +1,9 @@
 local awful = require("awful")
 local gears = require("gears")
 
-local clock = awful.widget.textclock("%a %d %b  |  %I:%M%P")
-Clone_widget_set.textclock = clock
+-- date and calendar
+local date = awful.widget.textclock("%a %d %b")
+Clone_widget_set.textdate = date
 
 local cal = awful.widget.calendar_popup.month({
 	start_sunday = true,
@@ -22,16 +23,20 @@ local cal = awful.widget.calendar_popup.month({
 		opacity = 0.7,
 	},
 })
-cal:attach(Clone_widget_set.textclock, "tm")
+cal:attach(date, "tm")
+
+-- clock
+local clock = awful.widget.textclock("%I:%M%P")
+Clone_widget_set.textclock = clock
 
 clock:buttons(awful.util.table.join(awful.button({}, 1, function()
-	if clock.format == "%a %d %b  |  %I:%M%P" then
+	if clock.format == "%I:%M%P" then
 		-- show seconds
-		clock.format = "%a %d %b  |  %I:%M:%S%P"
+		clock.format = "%I:%M:%S%P"
 		clock.refresh = 1
 	else
 		-- hide seconds
-		clock.format = "%a %d %b  |  %I:%M%P"
+		clock.format = "%I:%M%P"
 		clock.refresh = 60
 	end
 end)))

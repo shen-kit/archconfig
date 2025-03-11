@@ -17,10 +17,12 @@ function WB.add_widgets_left(s)
 	}
 end
 
-function WB.add_widgets_middle(s)
+function WB.add_widgets_middle(_)
 	return {
-		layout = wibox.layout.flex.horizontal,
-		wibox.container.place(Clone_widget_set.textclock, "center", "center"),
+		layout = wibox.layout.fixed.horizontal,
+		Clone_widget_set.textdate,
+		wibox.widget.textbox("  |  "),
+		Clone_widget_set.textclock,
 	}
 end
 

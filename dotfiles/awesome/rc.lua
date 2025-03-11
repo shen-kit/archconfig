@@ -18,18 +18,18 @@ require("main.theme")
 
 -- Custom Local Library
 local main = {
-  layouts = require("main.layouts"),
-  tags    = require("main.tags"),
-  rules   = require("main.rules"),
+	layouts = require("main.layouts"),
+	tags = require("main.tags"),
+	rules = require("main.rules"),
 }
 
 -- Custom Local Library: Keys and Mouse Binding
 local binding = {
-  globalbuttons = require("binding.globalbuttons"),
-  clientbuttons = require("binding.clientbuttons"),
-  globalkeys    = require("binding.globalkeys"),
-  clientkeys    = require("binding.clientkeys"),
-  bindtotags    = require("binding.bindtotags")
+	globalbuttons = require("binding.globalbuttons"),
+	clientbuttons = require("binding.clientbuttons"),
+	globalkeys = require("binding.globalkeys"),
+	clientkeys = require("binding.clientkeys"),
+	bindtotags = require("binding.bindtotags"),
 }
 
 -- Layouts
@@ -39,9 +39,7 @@ RC.layouts = main.layouts()
 RC.tags = main.tags()
 
 -- Menu
-RC.launcher = awful.widget.launcher(
-  { image = beautiful.awesome_icon, menu = RC.mainmenu }
-)
+RC.launcher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = RC.mainmenu })
 menubar.utils.terminal = RC.vars.terminal
 
 -- Mouse and Key bindings
@@ -53,10 +51,7 @@ root.buttons(binding.globalbuttons())
 root.keys(RC.globalkeys)
 
 -- Rules
-awful.rules.rules = main.rules(
-  binding.clientkeys(),
-  binding.clientbuttons()
-)
+awful.rules.rules = main.rules(binding.clientkeys(), binding.clientbuttons())
 
 -- Signals
 require("main.signals")
