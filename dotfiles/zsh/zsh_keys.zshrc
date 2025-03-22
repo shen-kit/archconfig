@@ -4,6 +4,13 @@
 # ========================================
 typeset -g -A key
 
+# emacs mode
+bindkey -e
+
+# if started typing only show suggestions starting with the given prefix
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
 key[Home]="${terminfo[khome]}"
 key[End]="${terminfo[kend]}"
 key[Delete]="${terminfo[kdch1]}"
@@ -12,8 +19,6 @@ key[Control-Right]="${terminfo[kRIT5]}"
 key[PageUp]="${terminfo[kpp]}"
 key[PageDown]="${terminfo[knp]}"
 key[Shift-Tab]="${terminfo[kcbt]}"
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
 
 # setup key accordingly
 [[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"       beginning-of-line
