@@ -1,0 +1,1 @@
+alias suspend="systemctl suspend"

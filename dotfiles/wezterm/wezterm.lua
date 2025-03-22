@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- run as interactive shell, not login shell
-config.default_prog = { "/usr/bin/bash" }
+config.default_prog = { "/usr/bin/zsh" }
 
 -- ==================================================
 -- =                    plugins                     =
