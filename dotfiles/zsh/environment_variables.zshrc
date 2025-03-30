@@ -19,3 +19,6 @@ export PATH="$PATH:$GEM_HOME/bin"
 export GTK_THEME=Adwaita:dark
 export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
 export QT_STYLE_OVERRIDE=Adwaita-Dark
+
+# make ctrl+w/alt+backspace stop on '/' char
+export WORDCHARS=${WORDCHARS//\/}
