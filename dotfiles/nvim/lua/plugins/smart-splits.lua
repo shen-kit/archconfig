@@ -1,8 +1,5 @@
 return {
-  {
-    "mrjones2014/smart-splits.nvim",
-    lazy = false,
-    opts = {},
-  },
+	"mrjones2014/smart-splits.nvim",
+	lazy = false,
+	opts = {},
 }
-

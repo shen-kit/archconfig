@@ -1,77 +1,58 @@
--- ============================================================
---                       Global Options
--- ============================================================
+local o = vim.opt
 
-local g            = vim.g
--- g.markdown_folding = 1
+-- context
+o.number = true
+o.relativenumber = true
+o.scrolloff = 5
+o.sidescrolloff = 5
+o.signcolumn = "yes"
+o.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
+o.pumheight = 10 -- popup menu height
 
--- ============================================================
---                       Local Options
--- ============================================================
+-- indents
+o.tabstop = 2
+o.softtabstop = 2
+o.shiftwidth = 2
+o.expandtab = true
+o.smartindent = true
 
-local opt          = vim.opt
+-- folds
+o.foldmethod = "expr"
+o.foldexpr =
+	"v:lnum >= line('$') || v:lnum == 0  ? '0'  :  indent(v:lnum+1) > indent(v:lnum)   ? 'a1' :  indent(v:lnum+1) < indent(v:lnum)   ? 's1' :  indent(v:lnum) == 0 ? '0' : '=' "
+o.foldtext =
+	[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+o.fillchars = "fold: "
+o.foldnestmax = 3
+o.foldminlines = 1
+o.foldlevelstart = 99
 
--- [[ history / backup ]]
-opt.swapfile       = false
-opt.backup         = false
-opt.undodir        = os.getenv("HOME") .. "/.vim/undodir"
-opt.undofile       = true
+-- search
+o.ignorecase = true
+o.smartcase = true
+o.hlsearch = false
+o.incsearch = true
 
--- [[ context ]]
-opt.number         = true
-opt.relativenumber = true
-opt.scrolloff      = 5
-opt.sidescrolloff  = 5
-opt.signcolumn     = 'yes'
-opt.completeopt    = { 'menu', 'menuone', 'noselect' }
-opt.pumheight      = 7
+-- splits
+o.splitright = true
+o.splitbelow = true
 
--- [[ theme / appearance ]]
-opt.termguicolors  = true
-opt.linebreak      = true      -- only wrap after a space
-opt.textwidth      = 9999      -- don't hard-wrap at 80 chars, override in ftplugin/<filetype>.lua for specific files
-opt.wrap           = true      -- whether to wrap at edges of screen
-opt.breakindent    = true      -- indent wrapped text to the same level as the first line
-opt.breakindentopt = "shift:2" -- indent 2 spaces in from the start of the line
-opt.showtabline    = 2         -- always show
-opt.conceallevel   = 0         -- show characters as they are
-vim.diagnostic.config({ virtual_text = false, signs = true, underline = false })
+-- sequences
+o.timeoutlen = 500
 
--- [[ indents ]]
-opt.tabstop        = 2
-opt.softtabstop    = 2
-opt.shiftwidth     = 2
-opt.expandtab      = true
-opt.smartindent    = true
+-- scrolling
+o.mousescroll = "ver:1,hor:1" -- scroll one line at a time
 
--- [[ folding ]]
-opt.foldmethod     = "expr"
-opt.foldexpr       =
-"v:lnum >= line('$') || v:lnum == 0  ? '0'  :  indent(v:lnum+1) > indent(v:lnum)   ? 'a1' :  indent(v:lnum+1) < indent(v:lnum)   ? 's1' :  indent(v:lnum) == 0 ? '0' : '=' "
-opt.foldtext       =
-[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
-opt.fillchars      = "fold: "
-opt.foldnestmax    = 3
-opt.foldminlines   = 1
-opt.foldlevelstart = 99
+-- appearance
+o.termguicolors = true
+o.linebreak = true -- don't wrap mid-word
+o.wrap = true
+o.breakindent = true -- indent wraps to same level as start
+o.breakindentopt = "shift:2" -- indent wraps 2 spaces more than start
+o.showtabline = 2 -- always
 
--- [[ search ]]
-opt.ignorecase     = true
-opt.smartcase      = true  -- case sensitive if search contains capitals
-opt.hlsearch       = false -- highlight all occurrences?
-opt.incsearch      = true  -- incremental search (update while typing)
-
--- [[ splits ]]
-opt.splitright     = true -- split right instead of left by default
-opt.splitbelow     = true -- split down instead of up by default
-
--- [[ sequences ]]
-opt.timeoutlen     = 500
-
--- [[ misc ]]
-opt.updatetime     = 50
-opt.path:append '**'
-opt.mousescroll    = 'ver:1,hor:1' -- scroll one line at a time (smoother scrolling)
-
--- [[ sessions ]]
-opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+-- backup / history
+o.swapfile = false
+o.backup = false
+o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+o.undofile = true
