@@ -16,7 +16,14 @@ require("obsidian").setup({
 	note_path_func = function(spec)
 		return (spec.dir / spec.title):with_suffix(".md")
 	end,
-	completion = { nvim_cmp = false, min_chars = 2 },
+	attachments = { -- pasting images
+		img_folder = "./obsidian_attachments",
+		img_text_func = function(client, path)
+			path = client:vault_relative_path(path) or path
+			return string.format("![[%s]]", path.name)
+		end,
+	},
+	completion = { nvim_cmp = false },
 	picker = { name = "telescope.nvim" },
 	-- what to do if :ObsidianOpenLink called on a non-file link (e.g. URL)
 	follow_url_func = function(url)
@@ -26,7 +33,8 @@ require("obsidian").setup({
 })
 
 require("render-markdown").setup({
-	render_modes = { "n", "c", "t", "v", "V", "i", "x", "\22" },
+	render_modes = { "n", "c", "t", "v", "V", "i", "x", "o", "\22" },
+	latex = { enabled = false },
 	file_types = { "markdown" },
 	heading = {
 		width = { "full", "block" },
