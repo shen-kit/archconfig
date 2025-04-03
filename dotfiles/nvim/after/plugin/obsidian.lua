@@ -20,7 +20,8 @@ require("obsidian").setup({
 		img_folder = "./obsidian_attachments",
 		img_text_func = function(client, path)
 			path = client:vault_relative_path(path) or path
-			return string.format("![[%s]]", path.name)
+			return string.format("![[%s]]", path.name) -- vimwiki syntax
+			-- return string.format("![%s](%s)", path.name, path) -- this format is required for 3rd/image.nvim
 		end,
 	},
 	completion = { nvim_cmp = false },
