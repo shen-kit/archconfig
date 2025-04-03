@@ -10,6 +10,16 @@ map("n", "<leader>u", "<CMD>UndotreeToggle<CR><CMD>UndotreeFocus<CR>", opts)
 -- no neck pain (centre buffer)
 map("n", "<leader>cc", "<CMD>NoNeckPain<CR>", opts)
 
+-- [[ folding (ufo) ]]
+map("n", "zR", require("ufo").openAllFolds, { desc = "Open all folds" })
+map("n", "zM", require("ufo").closeAllFolds, { desc = "Close all folds" })
+map("n", "zk", function()
+	local winid = require("ufo").peekFoldedLinesUnderCursor()
+	if not winid then
+		vim.lsp.buf.hover()
+	end
+end, { desc = "Peek fold" })
+
 -- [[ file navigation ]]
 
 -- nvim-tree
