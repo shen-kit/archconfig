@@ -4,6 +4,17 @@ local opt_loud = { silent = false, noremap = true }
 
 map("i", "jk", "<ESC>", opts)
 
+-- [[ diagnostics ]]
+map("n", "<leader>d", vim.diagnostic.open_float, opts)
+-- toggle loclist with all diagnostics for current buffer
+map("n", "grd", function()
+	if 0 == vim.fn.getloclist(0, { winid = 0 }).winid then
+		vim.diagnostic.setloclist()
+	else
+		vim.cmd.lclose()
+	end
+end, opts)
+
 -- [[ new lines ]]
 map("i", "<C-CR>", "<C-o>o", opts) -- below
 map("n", "<C-CR>", "o<ESC>", opts)
