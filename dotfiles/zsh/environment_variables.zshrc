@@ -11,9 +11,10 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 # colourise less output
 export LESS=R
 
+export GOPATH="$HOME/dev/.go"
+
 # make Ruby gems executable
 export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
 
 # dark theme
 export GTK_THEME=Adwaita:dark

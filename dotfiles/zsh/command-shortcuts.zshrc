@@ -1,10 +1,9 @@
 # ========== NVIM ==========
 
-alias vim=nvim
-alias vi=nvim
 alias v=nvim
+alias vi=nvim
+alias vim=nvim
 alias sv=sudoedit
-alias fv='nvim "$(fzf)"'
 
 # ========== FILES / NAVIGATION ==========
 
@@ -69,13 +68,13 @@ alias connect-bt-headphones="bluetoothctl connect 2C:FD:B3:8C:50:89"
 
 # python
 alias py="python"
-alias pwds="py ~/compsci/projects/cli-password-manager/password-manager.py"
 
-# GIT
-
+# git
 alias lg="lazygit"
 alias gl="git log --graph --color=always"
 alias glo="git log --oneline --graph --color=always"
+
+# finance tracker
 alias finances="finance-tracker /home/shenkit/gDrive/4_personal_documents/financial/finances.db"
 
 # ========== MISC. ==========
