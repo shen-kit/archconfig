@@ -11,7 +11,7 @@
 configuration {
 	modi            : "drun";
   show-icons      : true;
-  matching        : "fuzzy";
+  matching        : "normal"; // fuzzy
   levenshtein-sort: false;
 }
 

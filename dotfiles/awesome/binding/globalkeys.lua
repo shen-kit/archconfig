@@ -85,7 +85,7 @@ function _M.get()
 
 		-- launch applications
 		awful.key({ modkey }, "r", function()
-			os.execute("rofi -show drun")
+			os.execute("rofi -show drun -sort")
 		end, { description = "launch rofi", group = "launch applications" }),
 		awful.key({ modkey }, "Return", function()
 			awful.spawn(terminal)
