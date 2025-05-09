@@ -1,7 +1,8 @@
 vim.lsp.enable({
 	"clangd",
 	"lua_ls",
-	"pyright",
+	-- "pyright",
+	"basedpyright",
 	"tsserver",
 	"gopls",
 })

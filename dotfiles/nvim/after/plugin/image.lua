@@ -1,4 +1,4 @@
-require("image").setup({
-	backend = "kitty",
-	processor = "magick_cli",
-})
+-- require("image").setup({
+-- 	backend = "kitty",
+-- 	processor = "magick_cli",
+-- })

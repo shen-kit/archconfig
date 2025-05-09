@@ -1,15 +1,13 @@
 return {
 	{
-		"epwalsh/obsidian.nvim",
-		version = "*",
+		"obsidian-nvim/obsidian.nvim",
+		version = "*", -- recommended, use latest release instead of latest commit
 		lazy = true,
-		event = { -- only load for markdown files in my vault
-			"BufReadPre /home/shenkit/gDrive/1_obsidian/**",
-			"BufNewFile /home/shenkit/gDrive/1_obsidian/**",
+		event = {
+			"BufReadPre " .. vim.fn.expand("~") .. "/gDrive/1_obsidian/*.md",
+			"BufNewFile " .. vim.fn.expand("~") .. "/gDrive/1_obsidian/*.md",
 		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
@@ -17,5 +15,5 @@ return {
 		opts = {},
 	},
 	{ "dhruvasagar/vim-table-mode" },
-	{ "bullets-vim/bullets.vim" },
+	-- { "bullets-vim/bullets.vim" },
 }

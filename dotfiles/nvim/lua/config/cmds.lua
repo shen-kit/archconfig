@@ -12,3 +12,14 @@ create_cmd("Format", function(args)
 	end
 	require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
+
+-- toggle diagnostic messages, underlines, signs
+create_cmd("ToggleDiagnostics", function()
+	local toSet = not vim.diagnostic.config().underline
+	local virtualLines = toSet and { current_line = true } or false
+	vim.diagnostic.config({
+		virtual_lines = virtualLines,
+		underline = toSet,
+		signs = toSet,
+	})
+end, { range = false })

@@ -28,4 +28,10 @@ then
   PATH="$GEM_HOME/bin:$PATH"
 fi
 
+# cargo binaries
+if ! [[ "$PATH" =~ "/home/shenkit/.cargo/bin" ]]
+then
+  PATH="/home/shenkit/.cargo/bin:$PATH"
+fi
+
 export PATH
