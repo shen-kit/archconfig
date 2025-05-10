@@ -31,8 +31,7 @@ autoload -U compinit
 compinit
 zinit cdreplay -q # only call compinit once, startup gains
 
-# start ssh keychain (share ssh agent across terminal for github)
-eval $(keychain --quiet --eval --agents ssh)
+eval $(keychain --eval --quiet --agents ssh) #id_ed25519)
 
 # start programs required at end of zshrc
 eval "$(zoxide init zsh)"
