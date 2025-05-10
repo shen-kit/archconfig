@@ -15,5 +15,5 @@ return {
 		opts = {},
 	},
 	{ "dhruvasagar/vim-table-mode" },
-	-- { "bullets-vim/bullets.vim" },
+	{ "bullets-vim/bullets.vim" }, -- auto-insert new bullet on <CR>
 }
