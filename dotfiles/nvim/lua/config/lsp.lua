@@ -5,6 +5,7 @@ vim.lsp.enable({
 	"basedpyright",
 	"tsserver",
 	"gopls",
+	"dockerls",
 })
 
 vim.diagnostic.config({ virtual_lines = { current_line = true } })
