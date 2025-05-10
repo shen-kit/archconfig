@@ -7,7 +7,7 @@ map("i", "jk", "<ESC>", opts)
 -- [[ diagnostics / qflist / loclist ]]
 map("n", "<leader>d", vim.diagnostic.open_float, opts)
 map("n", "grd", function() -- toggle qflist with all diagnostics for current buffer
-	if 0 == vim.fn.getqflist(0, { winid = 0 }).winid then
+	if 0 == vim.fn.getqflist({ winid = 0 }).winid then -- qflist not open
 		vim.diagnostic.setqflist()
 	else
 		vim.cmd.lclose()
