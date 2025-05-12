@@ -8,6 +8,15 @@ local opts_loud = { silent = true, noremap = true }
 map("i", "<C-b>", "**", opts)
 map("v", "<C-b>", "s****<ESC>hP", opts) -- using mini.surround
 
+-- checkboxes
+map({ "i", "n" }, "<C-3>", "<CMD>ToggleCheckbox<CR>", opts)
+map(
+	"x",
+	"<C-3>",
+	':lua for i=vim.fn.line("\'<"),vim.fn.line("\'>") do vim.fn.cursor(i,1); vim.cmd("ToggleCheckbox") end<CR>gv',
+	opts
+)
+
 -- ===== obsidian specific =====
 
 map({ "i", "n" }, "<C-S-O>", "<CMD>ObsidianQuickSwitch<CR>", opts)

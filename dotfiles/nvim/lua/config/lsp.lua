@@ -1,8 +1,8 @@
 vim.lsp.enable({
 	"clangd",
 	"lua_ls",
-	-- "pyright",
-	"basedpyright",
+	"pyright",
+	-- "basedpyright",
 	"tsserver",
 	"gopls",
 	"dockerls",
