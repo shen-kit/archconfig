@@ -2,8 +2,7 @@ return {
 	{
 		"saghen/blink.cmp",
 		version = "1.*",
-		dependencies = { "L3MON4D3/LuaSnip", "rafamadriz/friendly-snippets" },
-		---@module 'blink.cmp'
+		dependencies = { "L3MON4D3/LuaSnip" },
 		opts = {
 			sources = {
 				default = function(_)
@@ -40,6 +39,17 @@ return {
 			signature = { enabled = true, window = { show_documentation = true } },
 		},
 		opts_extend = { "sources.default" },
+	},
+
+	{
+		"L3MON4D3/LuaSnip",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		config = function()
+			-- friendly snippets
+			require("luasnip.loaders.from_vscode").lazy_load({ exclude = { "markdown", "all" } })
+			-- custom snippets
+			require("luasnip.loaders.from_snipmate").lazy_load({ paths = { ".config/snippets" } })
+		end,
 	},
 
 	-- for nvim configuration

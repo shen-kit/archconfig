@@ -13,6 +13,16 @@ create_cmd("Format", function(args)
 	require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
+-- toggle autoformat
+create_cmd("ToggleAutoformat", function()
+	vim.g.disable_autoformat = not vim.g.disable_autoformat
+	if vim.g.disable_autoformat then
+		print("autoformat off")
+	else
+		print("autoformat on")
+	end
+end, { range = false })
+
 -- toggle diagnostic messages, underlines, signs
 create_cmd("ToggleDiagnostics", function()
 	local toSet = not vim.diagnostic.config().underline

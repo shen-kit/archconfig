@@ -1,25 +1,51 @@
+local map = vim.keymap.set
 return {
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-lua/plenary.nvim" }
-  },
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("nvim-tree").setup({
+				view = { width = 40 },
+				filters = { dotfiles = false },
+				actions = { open_file = { quit_on_open = true } },
+				hijack_directories = { enable = true },
+			})
 
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = function ()
-      return {
-        defaults = {
-          mappings = {
-            n = {
-              ["d"] = require("telescope.actions").delete_buffer,
-              ["q"] = require("telescope.actions").close,
-            }
-          }
-        }
-      }
-    end
-  },
+			map({ "i", "n" }, "<C-S-P>", vim.cmd.NvimTreeToggle)
+			map("n", "<leader>fc", vim.cmd.NvimTreeFindFile)
+		end,
+	},
 
-  { 'ThePrimeagen/harpoon' },
+	{
+		"ThePrimeagen/harpoon",
+		config = function()
+			require("harpoon").setup()
+
+			local harpoon_ui = require("harpoon.ui")
+			map("n", "<leader>h", function()
+				harpoon_ui.nav_file(1)
+			end)
+			map("n", "<leader>j", function()
+				harpoon_ui.nav_file(2)
+			end)
+			map("n", "<leader>k", function()
+				harpoon_ui.nav_file(3)
+			end)
+			map("n", "<leader>l", function()
+				harpoon_ui.nav_file(4)
+			end)
+			map("n", "<leader>;", function()
+				harpoon_ui.nav_file(5)
+			end)
+			map("n", "<leader>'", function()
+				harpoon_ui.nav_file(6)
+			end)
+			map("n", "<leader>e", function()
+				harpoon_ui.toggle_quick_menu()
+			end)
+			map("n", "<leader>a", function()
+				require("harpoon.mark").add_file()
+			end)
+		end,
+	},
 }

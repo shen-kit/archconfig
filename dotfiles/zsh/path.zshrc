@@ -23,9 +23,9 @@ then
 fi
 
 # ruby gems
-if ! [[ "$PATH" =~ "$GEM_HOME/bin" ]]
+if ! [[ "$PATH" =~ "/home/shenkit/.local/share/gem/ruby/3.4.0/bin" ]]
 then
-  PATH="$GEM_HOME/bin:$PATH"
+  PATH="/home/shenkit/.local/share/gem/ruby/3.4.0/bin:$PATH"
 fi
 
 # cargo binaries
