@@ -31,7 +31,10 @@ autoload -U compinit
 compinit
 zinit cdreplay -q # only call compinit once, startup gains
 
-eval $(keychain --eval --quiet --agents ssh) #id_ed25519)
+# load ssh key from keychain if already loaded
+if [ -f "$HOME/.keychain/$(hostname)-sh" ];then
+  source "$HOME/.keychain/$(hostname)-sh"
+fi
 
 # start programs required at end of zshrc
 eval "$(zoxide init zsh)"

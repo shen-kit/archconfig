@@ -70,9 +70,22 @@ alias connect-bt-headphones="bluetoothctl connect 2C:FD:B3:8C:50:89"
 alias py="python"
 
 # git
+
+lazy_ssh_setup() {
+  if ! ssh-add -l 2>/dev/null | grep -q 'ED25519'; then
+    eval "$(keychain --eval --quiet ~/.ssh/id_ed25519)"
+  fi
+} 
+
+git() {
+  lazy_ssh_setup
+  command git "$@"
+}
+
 alias lg="lazygit"
 alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto)  %D%n%s%n'"
 alias glo="git log --all --graph --pretty=format:'%C(magenta)%h %an %C(auto)> %s'"
+
 
 # finance tracker
 alias finances="finance-tracker /home/shenkit/gDrive/4_personal_documents/financial/finances.db"
