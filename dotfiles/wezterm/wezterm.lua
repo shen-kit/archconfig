@@ -125,7 +125,14 @@ config.keys = {
 
 	-- tabs
 	{ mods = "LEADER", key = "t", action = act.SpawnTab("CurrentPaneDomain") },
-	{ mods = "LEADER", key = "c", action = act.SpawnCommandInNewTab({ cwd = wezterm.home_dir }) },
+	{
+		mods = "LEADER",
+		key = "c",
+		action = act.SpawnCommandInNewTab({
+			cwd = wezterm.home_dir,
+			args = { "/usr/bin/zsh" }, -- SpawnCommandInNewTab doesn't use default_prog
+		}),
+	},
 	{ mods = "CTRL|ALT", key = "h", action = act.ActivateTabRelative(-1) },
 	{ mods = "CTRL|ALT", key = "l", action = act.ActivateTabRelative(1) },
 	{ mods = "CTRL|SHIFT", key = "LeftArrow", action = act.MoveTabRelative(-1) },
@@ -173,11 +180,6 @@ config.keys = {
 		mods = "ALT",
 		key = "w",
 		action = workspace_switcher.switch_workspace(),
-	},
-	{
-		mods = "CTRL|ALT",
-		key = "w",
-		action = sessionizer.show,
 	},
 
 	-- disable defaults
