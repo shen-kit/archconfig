@@ -80,6 +80,7 @@ return {
 	},
 	{
 		"Kicamon/markdown-table-mode.nvim",
+		event = "BufRead *.md", -- only load for markdown files
 		config = function()
 			require("markdown-table-mode").setup()
 			map("n", "<leader>tm", "<CMD>Mtm<CR>")
@@ -87,6 +88,7 @@ return {
 	},
 	{
 		"bullets-vim/bullets.vim",
+		event = "BufRead *.md", -- only load for markdown files
 		config = function()
 			local g = vim.g
 			g.bullets_outline_levels = { "num", "std-" } -- if indenting after a number, use unordered list

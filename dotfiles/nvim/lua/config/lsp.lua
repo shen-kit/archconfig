@@ -8,4 +8,7 @@ vim.lsp.enable({
 	"dockerls",
 })
 
-vim.diagnostic.config({ virtual_lines = { current_line = true } })
+vim.diagnostic.config({ virtual_lines = {
+	current_line = true,
+	severity = { min = vim.diagnostic.severity.WARN },
+} })
