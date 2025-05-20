@@ -17,15 +17,8 @@ o.expandtab = true
 o.smartindent = true
 
 -- folds
-o.foldmethod = "expr"
-o.foldexpr =
-	"v:lnum >= line('$') || v:lnum == 0  ? '0'  :  indent(v:lnum+1) > indent(v:lnum)   ? 'a1' :  indent(v:lnum+1) < indent(v:lnum)   ? 's1' :  indent(v:lnum) == 0 ? '0' : '=' "
-o.foldtext =
-	[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
-o.fillchars = "fold: "
-o.foldnestmax = 3
+o.foldlevel = 99
 o.foldminlines = 1
-o.foldlevelstart = 99
 
 -- search
 o.ignorecase = true

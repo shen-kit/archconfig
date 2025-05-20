@@ -32,7 +32,7 @@ return {
 			local map = vim.keymap.set
 			local t = require("telescope.builtin")
 
-			map("n", "<leader>ff", t.find_files) -- files in cwd
+			map("n", "<leader>fa", t.find_files) -- files in cwd (respect .gitignore)
 			map("n", "<leader>b", t.buffers) -- buffers
 			map("n", "fh", t.help_tags) -- help
 			map("n", "<leader>fp", t.resume) -- previous picker
