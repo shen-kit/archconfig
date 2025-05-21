@@ -47,14 +47,14 @@ map("n", "]<leader>", "<CMD>bn<CR>")
 map("i", "<C-/>", "<ESC>my:norm gcc<CR>`ya", { remap = true })
 map("n", "<C-/>", "mygcc `y", { remap = true })
 map("n", "J", "mzJ`z")
+-- reduce scroll amt
+map("n", "<C-u>", "15<C-u>zz")
+map("n", "<C-d>", "15<C-d>zz")
 -- yank
 map("x", "y", "ygv<ESC>")
 map("x", "Y", '"+ygv<ESC>') -- to system clipboard
 
 -- [[ scrolling ]]
--- reduce scroll amt
-map("n", "<C-u>", "15<C-u>")
-map("n", "<C-d>", "15<C-d>")
 -- ctrl+scroll = 3 lines, shift+scroll = <C-d>/<C-u>
 map({ "n", "v" }, "<C-ScrollWheelDown>", "3<C-e>")
 map({ "n", "v" }, "<C-ScrollWheelUp>", "3<C-y>")
