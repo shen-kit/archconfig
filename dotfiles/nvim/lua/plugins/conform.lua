@@ -11,6 +11,7 @@ return {
 				typescriptreact = { "prettierd" },
 				c = { "clang-format" },
 				go = { "gofmt" },
+				java = { "jdtls" },
 			},
 			format_on_save = function()
 				if vim.g.disable_autoformat then
