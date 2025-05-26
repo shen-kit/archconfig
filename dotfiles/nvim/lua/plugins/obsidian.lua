@@ -44,7 +44,7 @@ return {
 		config = function()
 			require("render-markdown").setup({
 				render_modes = true, -- always render
-				latex = { enabled = true },
+				latex = { enabled = false },
 				file_types = { "markdown" },
 				-- checkboxes and callouts
 				completions = { blink = { enabled = true } },
