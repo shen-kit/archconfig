@@ -16,6 +16,9 @@ map("n", "<leader>q", function() -- close loclist and qflist
 	vim.cmd.cclose()
 end)
 
+-- lsp
+map("n", "gd", vim.lsp.buf.definition)
+
 -- [[ new lines ]]
 map("i", "<C-CR>", "<C-o>o") -- below
 map("n", "<C-CR>", "o<ESC>")

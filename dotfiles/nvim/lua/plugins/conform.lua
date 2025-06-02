@@ -4,7 +4,6 @@ return {
 		require("conform").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "black" },
 				javascript = { "prettierd" },
 				typescript = { "prettierd" },
 				javascriptreact = { "prettierd" },
@@ -12,6 +11,9 @@ return {
 				c = { "clang-format" },
 				go = { "gofmt" },
 				java = { "jdtls" },
+			},
+			default_format_opts = {
+				lsp_format = "fallback",
 			},
 			format_on_save = function()
 				if vim.g.disable_autoformat then
