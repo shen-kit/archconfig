@@ -46,8 +46,6 @@ return {
 				render_modes = true, -- always render
 				latex = { enabled = false },
 				file_types = { "markdown" },
-				-- checkboxes and callouts
-				completions = { blink = { enabled = true } },
 				heading = {
 					width = { "full", "block" },
 					position = "inline",
@@ -104,8 +102,12 @@ return {
 			map("i", "<C-d>", "<CMD>BulletPromote<CR>")
 			map("n", ">", "<CMD>BulletDemote<CR>")
 			map("n", "<", "<CMD>BulletPromote<CR>")
+			map({ "i", "n" }, "<Tab>", "<CMD>BulletDemote<CR>")
+			map({ "i", "n" }, "<S-Tab>", "<CMD>BulletPromote<CR>")
 			map("x", ">", "<CMD>BulletDemoteVisual<CR>gv")
 			map("x", "<", "<CMD>BulletPromoteVisual<CR>gv")
+			map("x", "<Tab>", "<CMD>BulletDemoteVisual<CR>gv")
+			map("x", "<S-Tab>", "<CMD>BulletPromoteVisual<CR>gv")
 
 			-- ordered lists
 			map({ "i", "n" }, "<C-2>", "<CMD>RenumberList<CR>")

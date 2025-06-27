@@ -35,7 +35,7 @@ return {
 				documentation = { auto_show = true },
 				ghost_text = { enabled = false },
 			},
-			fuzzy = { implementation = "prefer_rust" },
+			fuzzy = { implementation = "lua" }, -- rust version fails with special chars
 			signature = { enabled = true, window = { show_documentation = true } },
 		},
 		opts_extend = { "sources.default" },
@@ -48,7 +48,7 @@ return {
 			-- friendly snippets
 			require("luasnip.loaders.from_vscode").lazy_load({ exclude = { "markdown", "all" } })
 			-- custom snippets
-			require("luasnip.loaders.from_snipmate").lazy_load({ paths = { ".config/snippets" } })
+			require("luasnip.loaders.from_snipmate").lazy_load({ paths = { "./snippets" } })
 		end,
 	},
 
