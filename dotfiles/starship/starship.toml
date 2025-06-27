@@ -9,7 +9,7 @@ $git_status\
 [ ](fg:#4B566B)\
 $cmd_duration\
 $python\
-$character
+\n$character
 """
 
 palette = "sk"
