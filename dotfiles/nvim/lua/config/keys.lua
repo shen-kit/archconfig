@@ -47,8 +47,6 @@ map("n", "[<leader>", "<CMD>bp<CR>")
 map("n", "]<leader>", "<CMD>bn<CR>")
 
 -- [[ in-place cursor ]]
-map("i", "<C-/>", "<ESC>my:norm gcc<CR>`ya", { remap = true })
-map("n", "<C-/>", "mygcc `y", { remap = true })
 map("n", "J", "mzJ`z")
 -- reduce scroll amt
 map("n", "<C-u>", "15<C-u>zz")
