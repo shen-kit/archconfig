@@ -1,3 +1,5 @@
+-- NOTE: USE BASEDPYRIGHT INSTEAD
+
 return {
 	cmd = { "pyright-langserver", "--stdio" },
 	root_markers = {

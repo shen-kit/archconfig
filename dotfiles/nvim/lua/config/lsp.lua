@@ -1,7 +1,6 @@
 vim.lsp.enable({
 	"clangd",
 	"lua_ls",
-	-- "pyright",
 	"basedpyright",
 	"ruff",
 	"tsserver",
@@ -9,7 +8,9 @@ vim.lsp.enable({
 	"dockerls",
 })
 
-vim.diagnostic.config({ virtual_lines = {
-	current_line = true,
-	severity = { min = vim.diagnostic.severity.WARN },
-} })
+vim.diagnostic.config({
+	virtual_lines = {
+		current_line = true,
+		severity = { min = vim.diagnostic.severity.WARN },
+	},
+})
