@@ -11,7 +11,7 @@ local altkey = RC.vars.altkey
 local terminal = RC.vars.terminal
 local browserPersonal = RC.vars.browserPersonal
 local browserUni = RC.vars.browserUni
-local browserWork = RC.vars.browserWork
+local browserWork = RC.vars.browserWsp
 local fileExplorer = RC.vars.fileExplorer
 
 local _M = {}
