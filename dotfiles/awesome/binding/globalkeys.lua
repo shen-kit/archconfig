@@ -17,11 +17,24 @@ local fileExplorer = RC.vars.fileExplorer
 local _M = {}
 
 -- ==================== HELPER FUNCTIONS ====================
-local function sendToSpotify(command)
+local function sendToMedia(command)
+	-- If spotify is open, send to spotify. If not, send to brave
 	return function()
 		awful.util.spawn_with_shell(
-			"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."
+			"win_name=$(xdotool getwindowfocus getwindowname 2>/dev/null); "
+				.. 'if echo "$win_name" | grep -iq "YouTube"; then '
+				.. "playerctl -p brave "
 				.. command
+				.. "; "
+				.. 'elif playerctl -l | grep -iq "spotify"; then '
+				.. "playerctl -p spotify "
+				.. command
+				.. "; "
+				.. 'elif playerctl -l | grep -iq "brave"; then '
+				.. "playerctl -p brave "
+				.. command
+				.. "; "
+				.. "fi"
 		)
 	end
 end
@@ -54,6 +67,17 @@ function _M.get()
 		awful.key({ modkey }, "=", function()
 			screen.primary.systray.visible = not screen.primary.systray.visible
 		end, { description = "show help", group = "awesome" }),
+		awful.key({ modkey, altkey, "Control", "Shift" }, "b", function()
+			awful.spawn.with_shell([[
+        if rfkill list bluetooth | grep -q "Soft blocked: yes"; then
+          rfkill unblock bluetooth
+          notify-send "Bluetooth Enabled"
+        else
+          rfkill block bluetooth
+          notify-send "Bluetooth Disabled"
+        fi
+      ]])
+		end, { description = "toggle bluetooth", group = "system" }),
 
 		-- switch tags
 		awful.key({ modkey }, "h", function()
@@ -84,7 +108,7 @@ function _M.get()
 		end, { description = "focus previous screen", group = "window focus" }),
 
 		-- launch applications
-		awful.key({ modkey }, "r", function()
+		awful.key({ modkey }, "space", function()
 			os.execute("rofi -show drun -sort")
 		end, { description = "launch rofi", group = "launch applications" }),
 		awful.key({ modkey }, "Return", function()
@@ -155,11 +179,11 @@ function _M.get()
 
 		-- ALSA volume control
 		awful.key({}, "XF86AudioRaiseVolume", function()
-			os.execute(string.format("amixer -q set Master 2%%+"))
+			os.execute(string.format("amixer -q set Master 5%%+"))
 			beautiful.volume.update()
 		end, { description = "volume up", group = "utilities" }),
 		awful.key({}, "XF86AudioLowerVolume", function()
-			os.execute(string.format("amixer -q set Master 2%%-"))
+			os.execute(string.format("amixer -q set Master 5%%-"))
 			beautiful.volume.update()
 		end, { description = "volume down", group = "utilities" }),
 		awful.key({}, "XF86AudioMute", function()
@@ -168,25 +192,20 @@ function _M.get()
 		end, { description = "toggle mute", group = "utilities" }),
 
 		-- music controls
-		awful.key({}, "XF86AudioPlay", sendToSpotify("PlayPause"), { description = "play/pause", group = "music" }),
-		awful.key({}, "XF86AudioNext", sendToSpotify("Next"), { description = "next track", group = "music" }),
-		awful.key({}, "XF86AudioPrev", sendToSpotify("Previous"), { description = "previous track", group = "music" }),
+		awful.key({}, "XF86AudioPlay", sendToMedia("play-pause"), { description = "play/pause", group = "music" }),
+		awful.key({}, "XF86AudioNext", sendToMedia("next"), { description = "next track", group = "music" }),
+		awful.key({}, "XF86AudioPrev", sendToMedia("previous"), { description = "previous track", group = "music" }),
 		awful.key(
 			{ "Control", "Shift" },
 			"space",
-			sendToSpotify("PlayPause"),
+			sendToMedia("play-pause"),
 			{ description = "play/pause", group = "music" }
 		),
-		awful.key(
-			{ "Control", altkey },
-			"Right",
-			sendToSpotify("Next"),
-			{ description = "next track", group = "music" }
-		),
+		awful.key({ "Control", altkey }, "Right", sendToMedia("next"), { description = "next track", group = "music" }),
 		awful.key(
 			{ "Control", altkey },
 			"Left",
-			sendToSpotify("Previous"),
+			sendToMedia("previous"),
 			{ description = "previous track", group = "music" }
 		)
 	)
