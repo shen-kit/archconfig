@@ -28,9 +28,9 @@ return {
 			desc = "LSP: Disable hover capability from Ruff",
 		})
 
-		require("lspconfig").pyright.setup({
+		require("lspconfig").basedpyright.setup({
 			settings = {
-				pyright = {
+				basedpyright = {
 					-- Using Ruff's import organizer
 					disableOrganizeImports = true,
 				},

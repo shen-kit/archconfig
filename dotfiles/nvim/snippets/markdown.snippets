@@ -53,3 +53,23 @@ snippet tworkout
  | #   | sets      | reps  | exercise                                    | notes               |
  | :-: | :-------: | :---: | ------------------------------------------- | ------------------- |
 
+
+snippet tbook
+  ---
+  author: $1
+  series: $2
+  genre:
+  - $3
+  priority: $4
+  owned: ${5:false}
+  status: to read
+  finished:
+  rating:
+  ---
+  « [[+Books.base]]
+  ***
+  
+  ## Notes
+  
+  -
+

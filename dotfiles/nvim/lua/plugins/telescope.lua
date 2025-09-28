@@ -8,15 +8,18 @@ return {
 		},
 		config = function()
 			require("telescope").setup({
-				defaults = {
-					layout_config = { horizontal = { width = 0.95 } },
+				defaults = require("telescope.themes").get_ivy({
+					layout_config = {
+						height = 0.8,
+						horizontal = { width = 0.95 }, -- doesn't apply to ivy theme
+					},
 					mappings = {
 						n = {
 							["d"] = require("telescope.actions").delete_buffer,
 							["q"] = require("telescope.actions").close,
 						},
 					},
-				},
+				}),
 				-- required for fzf-native
 				extensions = {
 					fzf = {

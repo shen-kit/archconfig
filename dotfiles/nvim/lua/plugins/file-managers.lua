@@ -1,5 +1,22 @@
 local map = vim.keymap.set
 return {
+
+	-- very promising, mixture of oil+tree view
+	-- {
+	-- 	"A7Lavinraj/fyler.nvim",
+	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	-- 	opts = {
+	-- 		icon_provider = "nvim-web-devicons",
+	-- 		views = {
+	-- 			explorer = {
+	-- 				kind = "split:leftmost",
+	-- 				width = 0.2,
+	-- 				height = 1.0,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
+
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-lua/plenary.nvim" },

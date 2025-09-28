@@ -5,6 +5,7 @@ return {
 		version = "*", -- recommended, use latest release instead of latest commit
 		dependencies = { "nvim-lua/plenary.nvim" },
 		lazy = true,
+		ft = "markdown",
 		event = {
 			"BufReadPre " .. vim.fn.expand("~") .. "/gDrive/1_obsidian/*.md",
 			"BufNewFile " .. vim.fn.expand("~") .. "/gDrive/1_obsidian/*.md",
@@ -23,24 +24,21 @@ return {
 				follow_url_func = function(url)
 					vim.fn.jobstart({ "xdg-open", url })
 				end,
-				mappings = {
-					["gf"] = {
-						action = function()
-							return require("obsidian").util.gf_passthrough()
-						end,
-						opts = { noremap = false, expr = true, buffer = true },
-					},
+				callbacks = {
+					enter_note = function(_, note)
+						map({ "i", "n" }, "<C-S-O>", "<CMD>Obsidian quick_switch<CR>", { buffer = note.bufnr })
+						map({ "n" }, "gf", "<CMD>Obsidian follow_link<CR>", { buffer = note.bufnr })
+					end,
 				},
-				ui = { enable = false },
+				ui = { enable = false }, -- let render-markdown handle UI
+				legacy_commands = false,
 			})
-
-			-- keymaps
-			map({ "i", "n" }, "<C-S-O>", "<CMD>ObsidianQuickSwitch<CR>")
 		end,
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+		ft = "markdown",
 		config = function()
 			require("render-markdown").setup({
 				render_modes = true, -- always render

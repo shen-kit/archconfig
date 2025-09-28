@@ -3,7 +3,7 @@ local o = vim.opt
 -- context
 o.number = true
 o.relativenumber = true
-o.scrolloff = 5
+o.scrolloff = 8
 o.sidescrolloff = 5
 o.signcolumn = "yes"
 o.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
