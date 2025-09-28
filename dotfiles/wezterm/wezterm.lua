@@ -43,20 +43,7 @@ local function split_nav(resize_or_move, key)
 	}
 end
 
--- Workspace Switcher (switch between existing workspaces)
-
 local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
-workspace_switcher.get_choices = function(_) -- only show existing workspaces
-	return workspace_switcher.choices.get_workspace_elements({})
-end
-
--- Sessioniser (create new sessions from git directories)
-
-local sessionizer = wezterm.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
-sessionizer.apply_to_config(config, true)
-sessionizer.config = {
-	paths = { "/home/shenkit/comp-sci", "/home/shenkit/fedora-awesome-config/" },
-}
 
 -- ====================================================
 -- =                    appearance                    =
@@ -177,7 +164,7 @@ config.keys = {
 		}),
 	},
 	{
-		mods = "ALT",
+		mods = "LEADER",
 		key = "w",
 		action = workspace_switcher.switch_workspace(),
 	},
