@@ -1,0 +1,80 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "dwl/tags",
+        "custom/sep",
+        "dwl/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "custom/sep",
+        "network",
+        "custom/sep",
+        "cpu",
+        "custom/sep",
+        "memory",
+        "custom/sep",
+        "pulseaudio",
+        "custom/sep",
+        "battery"
+    ],
+    "dwl/tags": {
+      "num-tags": 9,
+      "hide-vacant": false
+    },
+    "dwl/window": {
+      "format": "{title}"
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 4
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%d/%m/%Y  |  %I:%M %p}",
+        "format-alt": "{:%I:%M %p}"
+    },
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "Bat: {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format": "Connected",
+        "format-disconnected": "Disconnected"
+    },
+    "cpu": {
+      "format": "CPU: {usage}%",
+      "tooltip": false
+    },
+    "memory": {
+      "format": "Mem: {used}GiB"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "Vol: {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/sep": {
+      "format": "|",
+      "interval": 0,
+      "tooltip": false
+    }
+}
