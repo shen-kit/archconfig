@@ -20,3 +20,6 @@ require("config.opts")
 require("config.keys")
 require("config.lazy")
 require("config.lsp")
+
+-- defaults
+vim.g.disable_autoformat = true
