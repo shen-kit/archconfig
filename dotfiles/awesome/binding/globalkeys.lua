@@ -44,12 +44,12 @@ end
 function _M.get()
 	local globalkeys = gears.table.join(
 
-		awful.key({ modkey }, "space", function()
-			awful.spawn.easy_async_with_shell("/home/shenkit/toggle_graphite.sh")
-			awful.spawn.easy_async_with_shell("ntfy 'toggled keyboard layout'")
-		end, {
-			description = "toggle graphite keyboard layout",
-		}),
+		-- awful.key({ modkey }, "space", function()
+		-- 	awful.spawn.easy_async_with_shell("/home/shenkit/toggle_graphite.sh")
+		-- 	awful.spawn.easy_async_with_shell("ntfy 'toggled keyboard layout'")
+		-- end, {
+		-- 	description = "toggle graphite keyboard layout",
+		-- }),
 
 		-- awesome
 		awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),

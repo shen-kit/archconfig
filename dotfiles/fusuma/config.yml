@@ -7,9 +7,11 @@ swipe:
     left:
       command: awesome-client "require('awful').tag.viewnext()"
       interval: 1
+      threshold: 0.5
     right:
       command: awesome-client "require('awful').tag.viewprev()"
       interval: 1
+      threshold: 0.5
 
 pinch:
   in:
