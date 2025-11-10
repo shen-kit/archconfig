@@ -2,13 +2,12 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 28, // Waybar height (to be removed for auto height)
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    // "margin": "4px 8px",
+    // module order
     "modules-left": [
-        "dwl/tags",
-        "custom/sep",
-        "dwl/window"
+        "dwl/tags"
+        // "custom/sep",
+        // "dwl/window"
     ],
     "modules-center": [
         "clock"
@@ -16,16 +15,17 @@
     "modules-right": [
         "tray",
         "custom/sep",
-        "network",
-        "custom/sep",
-        "cpu",
-        "custom/sep",
         "memory",
+        "custom/sep",
+        "bluetooth",
+        "custom/sep",
+        "network",
         "custom/sep",
         "pulseaudio",
         "custom/sep",
         "battery"
     ],
+    // module definitions
     "dwl/tags": {
       "num-tags": 9,
       "hide-vacant": false
@@ -33,15 +33,55 @@
     "dwl/window": {
       "format": "{title}"
     },
+    "clock": {
+        // TODO: scrolling this calendar doesn't work
+        // "tooltip-format": "<tt><big>{calendar}</big></tt>",
+        "format": "{:%d/%m/%Y | %I:%M %p}",
+        "format-alt": "{:%I:%M %p}"
+    },
     "tray": {
         "icon-size": 21,
         "spacing": 4
     },
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%d/%m/%Y  |  %I:%M %p}",
-        "format-alt": "{:%I:%M %p}"
+    "memory": {
+      "format": "<span size='16pt' rise='-3200'>{icon}</span> {used}GiB",
+      "format-icons": "󰍛"
+    },
+    "network": {
+        "format": "Network status unknown",
+        "format-wifi": "<span size='18pt' rise='-3600'></span>",
+        "format-ethernet": "<span size='14pt' rise='-2800'>󱘖</span>",
+        "format-disconnected": "<span size='18pt' rise='-3600'>󰖪</span>",
+        "tooltip-format-wifi": "Wifi Connected",
+        "tooltip-format-ethernet": "Ethernet Connected",
+        "on-click": "nm-connection-editor"
+    },
+    "bluetooth": {
+      "format-on": "<span size='12pt' rise='-2400'></span>",
+      "format-connected": "<span size='12pt' rise='-2400'></span> ({num_connections})",
+      "format-disabled": "<span size='12pt' rise='-2400'>󰂲</span>",
+      "format-off": "<span size='12pt' rise='-2400'>󰂲</span>",
+      "tooltip-format": "",
+      "tooltip-format-connected": "{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "on-click": "blueman-manager",
+      "on-click-right": "rfkill toggle bluetooth"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "<span size='18pt' rise='-3600'>{icon}</span> {volume}%",
+        "format-muted": "<span size='18pt' rise='-3600'>󰝟</span> {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-icons": {
+            "default": [
+              "<span size='10pt' rise='0'></span>",
+              "<span size='14pt' rise='-1800'></span>",
+              "<span size='18pt' rise='-3600'></span>"
+            ]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "amixer -q set Master toggle",
+        "scroll-step": 2
     },
     "battery": {
         "states": {
@@ -49,32 +89,18 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "Bat: {capacity}%",
+        "format": "<span size='18pt' rise='-3600'>{icon}</span> {capacity}%",
         "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        "format": "Connected",
-        "format-disconnected": "Disconnected"
-    },
-    "cpu": {
-      "format": "CPU: {usage}%",
-      "tooltip": false
-    },
-    "memory": {
-      "format": "Mem: {used}GiB"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "Vol: {volume}%",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
     },
     "custom/sep": {
       "format": "|",
       "interval": 0,
+      "tooltip": false
+    },
+
+    // unused
+    "cpu": {
+      "format": "CPU: {usage}%",
       "tooltip": false
     }
 }

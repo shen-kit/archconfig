@@ -21,18 +21,19 @@ button {
 }
 
 #custom-sep {
-  padding: 0 8px;
+  padding: 0 10px;
 }
 
 #battery {
-  margin-right: 12px;
+  margin-right: 10px;
 }
 
 /* mango tags */
 
 #tags button {
   color: @subtext;
-  padding: 0px 2px;
+  padding: 0px 1px;
+  margin: 0px 1px;
 }
 
 #tags button.occupied {
