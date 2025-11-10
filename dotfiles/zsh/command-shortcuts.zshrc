@@ -54,9 +54,10 @@ alias mv="mv -i"
 
 # ========== CLIPBOARD ==========
 
-alias cpwd="pwd | xsel -ib"   # copy current directory path to clipboard
-alias cpc="xsel -ib < "                     # copy file contents to clipboard
-alias cpat="xsel -ib < $HOME/gDrive/3_uni/gitlab-pat.txt"
+alias cpwd="pwd | wl-copy"   # copy current directory path to clipboard
+# alias cpwd="pwd | xsel -ib"   # copy current directory path to clipboard
+alias cpc="wl-copy < "                     # copy file contents to clipboard
+alias cpat="wl-copy < $HOME/gDrive/3_uni/gitlab-pat.txt"
 
 # ========== BLUETOOTH / PERIPHERALS ==========
 
