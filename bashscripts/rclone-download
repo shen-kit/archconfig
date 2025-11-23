@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 FILE=/tmp/rclone-downloaded.lock
 LOGFILE=$HOME/.cache/rclone/rclone.log

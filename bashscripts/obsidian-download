@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 notify-send "Rclone Obsidian Download" "download starting"
 rclone sync gdrive:/1_obsidian/ $HOME/gDrive/1_obsidian/

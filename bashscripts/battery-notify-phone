@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # ============================================================ 
 # Send a notification to my phone (via Telegram) when laptop
