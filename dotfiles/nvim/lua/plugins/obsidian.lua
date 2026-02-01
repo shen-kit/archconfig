@@ -3,9 +3,9 @@ return {
 	{
 		"obsidian-nvim/obsidian.nvim",
 		version = "*", -- recommended, use latest release instead of latest commit
+		ft = "markdown",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		lazy = true,
-		ft = "markdown",
 		event = {
 			"BufReadPre " .. vim.fn.expand("~") .. "/gDrive/1_obsidian/*.md",
 			"BufNewFile " .. vim.fn.expand("~") .. "/gDrive/1_obsidian/*.md",
@@ -16,16 +16,18 @@ return {
 					{ name = "personal", path = "~/gDrive/1_obsidian/" },
 				},
 				completion = { blink = true, nvim_cmp = false },
-				disable_frontmatter = true,
-				wiki_link_func = "use_alias_only",
+        frontmatter = { enabled = false },
+				wiki_link_func = require("obsidian.builtin").wiki_link_id_prefix,
+        preferred_link_style = "wiki",
 				new_notes_location = "current_dir",
 				picker = { name = "telescope.nvim" },
 				-- what to do if :ObsidianOpenLink called on a non-file link (e.g. URL)
-				follow_url_func = function(url)
-					vim.fn.jobstart({ "xdg-open", url })
-				end,
+        follow_url_func = vim.ui.open,
+				-- follow_url_func = function(url)
+				-- 	vim.fn.jobstart({ "xdg-open", url })
+				-- end,
 				callbacks = {
-					enter_note = function(_, note)
+					enter_note = function(note)
 						map({ "i", "n" }, "<C-S-O>", "<CMD>Obsidian quick_switch<CR>", { buffer = note.bufnr })
 						map({ "n" }, "gf", "<CMD>Obsidian follow_link<CR>", { buffer = note.bufnr })
 					end,
@@ -41,9 +43,11 @@ return {
 		ft = "markdown",
 		config = function()
 			require("render-markdown").setup({
+				file_types = { "markdown" },
 				render_modes = true, -- always render
 				latex = { enabled = false },
-				file_types = { "markdown" },
+				sign = { enabled = false },
+				paragraph = { enabled = false },
 				heading = {
 					width = { "full", "block" },
 					position = "inline",
@@ -59,7 +63,6 @@ return {
 				link = {
 					wiki = { icon = " ", highlight = "RenderMarkdownWikiLink" },
 				},
-				sign = { enabled = false },
 				anti_conceal = {
 					ignore = {
 						head_background = true,

@@ -67,7 +67,7 @@ map("i", "<M-ScrollWheelDown>", "<C-o><C-d>")
 map("i", "<M-ScrollWheelUp>", "<C-o><C-u>")
 
 -- [[ save & exit ]]
-map({ "i", "n", "x" }, "<C-s>", "<CMD>w<CR>", { silent = false })
+map({ "i", "n", "x" }, "<C-s>", "<CMD>update<CR>", { silent = false })
 
 -- [[ misc ]]
 

@@ -1,6 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	config = function()
+    vim.g.disable_autoformat = true
 		require("conform").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },

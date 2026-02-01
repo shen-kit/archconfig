@@ -122,8 +122,8 @@ config.keys = {
 	},
 	{ mods = "CTRL|ALT", key = "h", action = act.ActivateTabRelative(-1) },
 	{ mods = "CTRL|ALT", key = "l", action = act.ActivateTabRelative(1) },
-	{ mods = "CTRL|SHIFT", key = "LeftArrow", action = act.MoveTabRelative(-1) },
-	{ mods = "CTRL|SHIFT", key = "RightArrow", action = act.MoveTabRelative(1) },
+	{ mods = "CTRL|ALT", key = "LeftArrow", action = act.MoveTabRelative(-1) },
+	{ mods = "CTRL|ALT", key = "RightArrow", action = act.MoveTabRelative(1) },
 	{
 		mods = "LEADER",
 		key = ",",
@@ -153,6 +153,7 @@ config.keys = {
 
 	-- workspaces
 	{ mods = "ALT", key = "]", action = act.SwitchWorkspaceRelative(1) },
+	{ mods = "ALT", key = "[", action = act.SwitchWorkspaceRelative(-1) },
 	{
 		mods = "LEADER",
 		key = "o",
