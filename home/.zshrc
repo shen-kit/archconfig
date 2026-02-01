@@ -31,11 +31,12 @@ autoload -U compinit
 compinit
 zinit cdreplay -q # only call compinit once, startup gains
 
-# load ssh key from keychain if already loaded
-if [ -f "$HOME/.keychain/$(hostname)-sh" ];then
-  source "$HOME/.keychain/$(hostname)-sh"
-fi
+eval $(keychain --eval --quick --quiet)
+
+eval $(gnome-keyring-daemon --start --components=secrets)
+export $(gnome-keyring-daemon --start --components=secrets)
 
 # start programs required at end of zshrc
+eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
