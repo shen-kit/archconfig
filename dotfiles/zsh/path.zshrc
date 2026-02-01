@@ -22,11 +22,11 @@ then
   PATH="/usr/local/go/bin:$HOME/dev/.go/bin:$PATH"
 fi
 
-# ruby gems
-if ! [[ "$PATH" =~ "/home/shenkit/.local/share/gem/ruby/3.4.0/bin" ]]
-then
-  PATH="/home/shenkit/.local/share/gem/ruby/3.4.0/bin:$PATH"
-fi
+# # ruby gems
+# if ! [[ "$PATH" =~ "/home/shenkit/.local/share/gem/ruby/3.4.0/bin" ]]
+# then
+#   PATH="/home/shenkit/.local/share/gem/ruby/3.4.0/bin:$PATH"
+# fi
 
 # cargo binaries
 if ! [[ "$PATH" =~ "/home/shenkit/.cargo/bin" ]]

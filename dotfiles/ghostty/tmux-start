@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Only start tmux if not already inside
+if [ -z "$TMUX" ]; then
+    exec tmux new-session -A -s main
+else
+    exec "$SHELL"
+fi
+

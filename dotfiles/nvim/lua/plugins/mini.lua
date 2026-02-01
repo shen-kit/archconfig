@@ -58,11 +58,11 @@ return {
 				vim.schedule(function()
 					vim.api.nvim_win_set_cursor(0, curpos)
 				end)
-			end
+      end
 
-			map("n", "<C-/>", comment_normal)
-			map("v", "<C-/>", comment_visual)
-			map("i", "<C-/>", function()
+			map("n", "<C-_>", comment_normal)
+			map("v", "<C-_>", comment_visual)
+			map("i", "<C-_>", function()
 				vim.cmd("stopinsert")
 				vim.cmd("normal l")
 				vim.schedule(function()

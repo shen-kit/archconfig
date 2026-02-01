@@ -21,11 +21,6 @@ return {
         preferred_link_style = "wiki",
 				new_notes_location = "current_dir",
 				picker = { name = "telescope.nvim" },
-				-- what to do if :ObsidianOpenLink called on a non-file link (e.g. URL)
-        follow_url_func = vim.ui.open,
-				-- follow_url_func = function(url)
-				-- 	vim.fn.jobstart({ "xdg-open", url })
-				-- end,
 				callbacks = {
 					enter_note = function(note)
 						map({ "i", "n" }, "<C-S-O>", "<CMD>Obsidian quick_switch<CR>", { buffer = note.bufnr })
