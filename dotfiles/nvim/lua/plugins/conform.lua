@@ -11,7 +11,6 @@ return {
 				typescriptreact = { "prettierd" },
 				c = { "clang-format" },
 				go = { "gofmt" },
-				java = { "jdtls" },
 			},
 			default_format_opts = {
 				lsp_format = "fallback",

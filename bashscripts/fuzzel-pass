@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+STORE="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+
+ENTRY=$(
+    find "$STORE" -type f -name '*.gpg' \
+        | sed "s|^$STORE/||; s|\.gpg$||" \
+        | sort \
+        | fuzzel -d
+)
+
+[ -z "$ENTRY" ] && exit 0
+
+pass show "$ENTRY" | head -n1 | wl-copy
+

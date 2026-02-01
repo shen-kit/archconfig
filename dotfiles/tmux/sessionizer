@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$(
+    {
+      echo "$HOME/archconfig"
+      find "$HOME/archconfig/dotfiles/" -mindepth 1 -maxdepth 1 -type d
+      find "$HOME/dev" -mindepth 2 -maxdepth 2 -type d
+    } |
+      sed "s|$HOME|~|" |
+      fzf |
+      sed "s|~|$HOME|"
+    )
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+# avoid dangerous names like 'bash' or 'nvim'
+sanitised_name="s-$selected_name"
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $sanitised_name -c $selected
+    exit 0
+fi
+
+if ! tmux has-session -t="$sanitised_name" 2>/dev/null; then
+    tmux new-session -d -s "$sanitised_name" -n "git" -c "$selected" "zsh -c 'lazygit; exec zsh'"
+    tmux new-window -t "$sanitised_name" -n "nvim" -c "$selected" "zsh -c 'nvim .; exec zsh'"
+    tmux new-window -t "$sanitised_name" -n "shell" -c "$selected" "zsh"
+    tmux select-window -t "$sanitised_name:nvim"
+fi
+tmux switch-client -t $sanitised_name

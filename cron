@@ -1,0 +1,8 @@
+# check battery every 2 minutes
+*/2 * * * * ~/.bashscripts/battery-notify
+
+# check battery and notify phone
+*/5 * * * * ~/.bashscripts/battery-notify-phone
+
+# backup remotes every 10 minutes
+*/10 * * * * ~/.bashscripts/rclone-upload
