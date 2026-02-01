@@ -15,8 +15,8 @@
     "modules-right": [
         "tray",
         "custom/sep",
-        "memory",
-        "custom/sep",
+        // "memory",
+        // "custom/sep",
         "bluetooth",
         "custom/sep",
         "network",
@@ -44,7 +44,7 @@
         "spacing": 4
     },
     "memory": {
-      "format": "<span size='16pt' rise='-3200'>{icon}</span> {used}GiB",
+      "format": "<span size='16pt' rise='-3200'>{icon}</span> {used:.1f}GiB",
       "format-icons": "󰍛"
     },
     "network": {
@@ -89,8 +89,9 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "<span size='18pt' rise='-3600'>{icon}</span> {capacity}%",
-        "format-icons": ["", "", "", "", ""]
+        "format": "<span size='11pt' rise='-200'>{icon}</span> {capacity}%",
+        "format-charging": "<span size='11pt' rise='-200'>󰂄</span> {capacity}%",
+        "format-icons": ["󰂎", "󰁻", "󰁽", "󰁿", "󰂁", "󰁹"]
     },
     "custom/sep": {
       "format": "|",
