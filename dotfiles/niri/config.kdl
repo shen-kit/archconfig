@@ -1,6 +1,7 @@
 // https://yalter.github.io/niri/Configuration:-Introduction
 
 spawn-at-startup "wlsunset -l -32.0 -L 115.999999999"
+spawn-sh-at-startup "python /home/shenkit/.config/niri/tweaks/tile_to_n.py -n 2"
 
 input {
     keyboard {
