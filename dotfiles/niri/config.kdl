@@ -1,7 +1,7 @@
 // https://yalter.github.io/niri/Configuration:-Introduction
 
 spawn-at-startup "wlsunset -l -32.0 -L 115.999999999"
-spawn-sh-at-startup "python /home/shenkit/.config/niri/tweaks/tile_to_n.py -n 2"
+spawn-sh-at-startup "python ~/.config/niri/tweaks/tile_to_n.py -n 2"
 
 input {
     keyboard {
@@ -29,6 +29,19 @@ output "eDP-1" {
     transform "normal"
     position x=0 y=0
 }
+output "DP-2" {
+    mode "1920x1080@59.999"
+    scale 1
+    transform "normal"
+    position x=1920 y=0
+}
+output "DP-3" {
+    mode "1920x1080@59.999"
+    scale 1
+    transform "normal"
+    position x=3840 y=0
+}
+
 
 layout {
     gaps 4
@@ -37,6 +50,8 @@ layout {
 
     preset-column-widths {
         proportion 0.5
+        proportion 0.3333333
+        proportion 0.6666666
     }
 
     // You can change the default width of the new windows.
@@ -81,7 +96,7 @@ prefer-no-csd
 
 window-rule {
     match app-id=r#"ghostty"#
-    opacity 0.9
+    opacity 0.95
     draw-border-with-background false
 }
 
@@ -122,8 +137,8 @@ binds {
     Mod+Ctrl+Shift+J    { move-workspace-down; }
     Mod+Ctrl+Shift+K    { move-workspace-up; }
 
-    Mod+Ctrl+K          { focus-monitor-right; }
-    Mod+Ctrl+J          { focus-monitor-left; }
+    Mod+Ctrl+L          { focus-monitor-right; }
+    Mod+Ctrl+H          { focus-monitor-left; }
     Mod+O               { move-window-to-monitor-right; }
     Mod+Shift+O         { move-window-to-monitor-left; }
 
@@ -237,3 +252,5 @@ hotkey-overlay {
 
 animations { }
 
+
+include "dms/outputs.kdl"
