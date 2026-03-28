@@ -4,9 +4,6 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup({
-				transparent_background = true,
-			})
 			vim.cmd("colorscheme catppuccin")
 		end,
 	},
@@ -17,7 +14,6 @@ return {
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
-					theme = "catppuccin",
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 					disabled_filetypes = {

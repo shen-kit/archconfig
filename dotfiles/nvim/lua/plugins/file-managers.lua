@@ -22,9 +22,14 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("nvim-tree").setup({
-				view = { width = 40 },
+				view = { width = 36 },
 				filters = { dotfiles = false },
-				actions = { open_file = { quit_on_open = true } },
+        actions = {
+          open_file = {
+            quit_on_open = true,
+            window_picker = { enable = false },
+          }
+        },
 				hijack_directories = { enable = true },
 			})
 
