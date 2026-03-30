@@ -37,3 +37,16 @@ create_au({ "BufNewFile", "BufRead" }, {
 	command = "set filetype=sh",
 	group = my_group,
 })
+
+-- git commits
+vim.api.nvim_create_autocmd("FileType", {
+  group = "my autocommands",
+  pattern = "gitcommit",
+  callback = function()
+    vim.opt_local.textwidth = 72
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+    vim.opt_local.formatoptions:append("t")
+    vim.opt_local.colorcolumn = "73"
+  end,
+})
