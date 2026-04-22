@@ -21,3 +21,7 @@ export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 # make ctrl+w/alt+backspace stop on '/' char
 export WORDCHARS=${WORDCHARS//\/}
+
+# flutter
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
