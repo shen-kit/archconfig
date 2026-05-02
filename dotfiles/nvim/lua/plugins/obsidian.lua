@@ -7,13 +7,13 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		lazy = true,
 		event = {
-			"BufReadPre " .. vim.fn.expand("~") .. "/gDrive/1_obsidian/*.md",
-			"BufNewFile " .. vim.fn.expand("~") .. "/gDrive/1_obsidian/*.md",
+			"BufReadPre " .. vim.fn.expand("~") .. "/syncthing/1_notes/*.md",
+			"BufNewFile " .. vim.fn.expand("~") .. "/syncthing/1_notes/*.md",
 		},
 		config = function()
 			require("obsidian").setup({
 				workspaces = {
-					{ name = "personal", path = "~/gDrive/1_obsidian/" },
+					{ name = "personal", path = "~/syncthing/1_notes/" },
 				},
 				completion = { blink = true, nvim_cmp = false },
         frontmatter = { enabled = false },
