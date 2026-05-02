@@ -1,1 +1,6 @@
 lazy-lock.json
+
+# niri / dms auto-generated files
+dotfiles/DankMaterialShell/.*
+dotfiles/DankMaterialShell/plugins/
+dotfiles/niri/dms/
