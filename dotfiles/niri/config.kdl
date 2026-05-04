@@ -118,8 +118,8 @@ binds {
     Mod+Semicolon     { spawn "~/.bashscripts/fuzzel-emoji-picker"; }
     Mod+N             { spawn "obsidian"; }
     Mod+E             { spawn "thunar"; }
-    Mod+B             { spawn-sh "brave --profile-directory=\"Default\""; }
-    Mod+Shift+B       { spawn-sh "brave --profile-directory=\"Profile 2\""; }
+    Mod+B             { spawn-sh "brave-origin-beta --profile-directory=\"Profile 1\""; }
+    Mod+Shift+B       { spawn-sh "brave-origin-beta --profile-directory=\"Profile 2\""; }
 
 
     // window control
