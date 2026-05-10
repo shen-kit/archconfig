@@ -17,3 +17,7 @@ log "Configuring keyd for escape tap-hold behaviour"
 sudo systemctl enable --now keyd
 sudo cp -f ../keyd.conf /etc/keyd/default.conf
 sudo keyd reload
+
+log "Configuring gnome-keyring-daemon"
+systemctl --user enable --now gnome-keyring-daemon.service
+systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_SESSION

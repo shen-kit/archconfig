@@ -39,9 +39,6 @@ bindkey '^x^e' edit-command-line
 
 eval "$(keychain --eval --quick --quiet)"
 
-eval $(gnome-keyring-daemon --start --components=secrets)
-export $(gnome-keyring-daemon --start --components=secrets)
-
 # start programs required at end of zshrc
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
