@@ -24,7 +24,7 @@ default_delay_ms = 1000 if perf_counter() < 5 else 0
 default_maximize_solos = True
 default_maximize_solo_on_close = True
 default_collapse_solos_on_open = True
-default_apply_on_move = False
+default_apply_on_move = True
 default_debug_names = False
 default_debug_data = False
 

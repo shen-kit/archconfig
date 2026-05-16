@@ -1,5 +1,7 @@
 # Start-up
-command = "$HOME/.config/ghostty/tmux-start"
+# command = "$HOME/.config/ghostty/tmux-start"
+# command = "zellij attach -c default"
+command = "zsh"
 confirm-close-surface = false
 
 # Font

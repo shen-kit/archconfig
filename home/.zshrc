@@ -43,3 +43,8 @@ eval "$(keychain --eval --quick --quiet)"
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+
+# Automatically attach to a session named 'main' on terminal startup
+if [[ -z "$ZELLIJ" ]]; then
+    zellij attach -c main
+fi

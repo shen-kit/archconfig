@@ -84,3 +84,4 @@ alias finances="finance-tracker /home/shenkit/gDrive/4_personal_documents/financ
 
 alias ntfy="notify-send"
 alias ii="xdg-open"
+alias zj="zellij a -c main"
