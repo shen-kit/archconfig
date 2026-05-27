@@ -80,4 +80,3 @@ alias glo="git log --oneline --graph"
 
 alias ntfy="notify-send"
 alias ii="xdg-open"
-alias zj="zellij a -c main"

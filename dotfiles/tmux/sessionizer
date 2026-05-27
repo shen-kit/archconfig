@@ -6,13 +6,24 @@ else
   selected=$(
     {
       echo "$HOME/archconfig"
-      find "$HOME/archconfig/dotfiles/" -mindepth 1 -maxdepth 1 -type d
-      find "$HOME/dev" -mindepth 2 -maxdepth 2 -type d
-    } |
-      sed "s|$HOME|~|" |
-      fzf |
-      sed "s|~|$HOME|"
-    )
+
+      fd . "$HOME/archconfig/dotfiles/" \
+        -t d \
+        --min-depth 1 \
+        --max-depth 1
+
+      fd '^\.git$' "$HOME/dev" \
+        -H \
+        -t d \
+        --prune \
+        --min-depth 3 \
+        --max-depth 5 |
+        sed -E 's|/\.git/?$||'
+      } |
+        sed "s|$HOME|~|" |
+        fzf |
+        sed "s|~|$HOME|"
+      )
 fi
 
 if [[ -z $selected ]]; then
@@ -21,7 +32,7 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 # avoid dangerous names like 'bash' or 'nvim'
-sanitised_name="s-$selected_name"
+sanitised_name="_$selected_name"
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
@@ -32,7 +43,7 @@ fi
 if ! tmux has-session -t="$sanitised_name" 2>/dev/null; then
     tmux new-session -d -s "$sanitised_name" -n "git" -c "$selected" "zsh -c 'lazygit; exec zsh'"
     tmux new-window -t "$sanitised_name" -n "nvim" -c "$selected" "zsh -c 'nvim .; exec zsh'"
-    tmux new-window -t "$sanitised_name" -n "shell" -c "$selected" "zsh"
+    tmux new-window -t "$sanitised_name" -n "zsh" -c "$selected" "zsh"
     tmux select-window -t "$sanitised_name:nvim"
 fi
 tmux switch-client -t $sanitised_name
