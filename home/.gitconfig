@@ -7,3 +7,9 @@
 	ff = only
 [credential]
 	helper = cache --timeout=10800
+[alias]
+	rbi = rebase --interactive
+	cm = commit -m
+	ca = commit --amend
+	can = commit --amend --no-edit
+	co = checkout

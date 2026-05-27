@@ -74,11 +74,7 @@ alias py="python"
 
 alias lg="lazygit"
 alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto)  %D%n%s%n'"
-alias glo="git log --all --graph --pretty=format:'%C(magenta)%h %an %C(auto)> %s'"
-
-
-# finance tracker
-alias finances="finance-tracker /home/shenkit/gDrive/4_personal_documents/financial/finances.db"
+alias glo="git log --oneline --graph"
 
 # ========== MISC. ==========
 

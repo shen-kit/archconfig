@@ -16,6 +16,12 @@ then
   PATH="$HOME/.bashscripts:$PATH"
 fi
 
+# npm
+if ! [[ "$PATH" =~ "$HOME/.local/share/npm/bin:" ]]
+then
+  PATH="$HOME/.local/share/npm/bin:$PATH"
+fi
+
 # go
 if ! [[ "$PATH" =~ "/usr/local/go/bin:$HOME/dev/.go/bin:" ]]
 then
