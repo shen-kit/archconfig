@@ -12,10 +12,18 @@ return {
 	},
 	settings = {
 		basedpyright = {
+			-- Using Ruff's import organizer.
+			disableOrganizeImports = true,
 			analysis = {
 				autoSearchPaths = true,
 				-- diagnosticMode = "openFilesOnly",
 				useLibraryCodeForTypes = true,
+			},
+		},
+		python = {
+			analysis = {
+				-- Ignore all files for analysis to exclusively use Ruff for linting.
+				ignore = { "*" },
 			},
 		},
 	},

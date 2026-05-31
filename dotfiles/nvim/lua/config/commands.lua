@@ -1,6 +1,6 @@
 local create_cmd = vim.api.nvim_create_user_command
 
--- format buffer
+-- Format buffer.
 create_cmd("Format", function(args)
 	local range = nil
 	if args.count ~= -1 then
@@ -13,7 +13,12 @@ create_cmd("Format", function(args)
 	require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
--- toggle autoformat
+-- Sync plugins manually.
+create_cmd("PluginSync", function()
+	require("lazy").sync()
+end, { desc = "Sync plugins with lazy.nvim" })
+
+-- Toggle autoformat.
 create_cmd("ToggleAutoformat", function()
 	vim.g.disable_autoformat = not vim.g.disable_autoformat
 	if vim.g.disable_autoformat then
@@ -23,13 +28,13 @@ create_cmd("ToggleAutoformat", function()
 	end
 end, { range = false })
 
--- toggle diagnostic messages, underlines, signs
+-- Toggle diagnostic messages, underlines, signs.
 create_cmd("ToggleDiagnostics", function()
-	local toSet = not vim.diagnostic.config().underline
-	local virtualLines = toSet and { current_line = true } or false
+	local to_set = not vim.diagnostic.config().underline
+	local virtual_lines = to_set and { current_line = true } or false
 	vim.diagnostic.config({
-		virtual_lines = virtualLines,
-		underline = toSet,
-		signs = toSet,
+		virtual_lines = virtual_lines,
+		underline = to_set,
+		signs = to_set,
 	})
 end, { range = false })

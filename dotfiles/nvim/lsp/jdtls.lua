@@ -1,15 +1,28 @@
 return {
-	cmd = { "jdtls", "-configuration", "/home/user/.cache/jdtls/config", "-data", "/home/user/.cache/jdtls/workspace" },
+	cmd = { "/usr/bin/jdtls" },
 	root_markers = {
-		-- Multi-module projects
-		{ ".git", "build.gradle", "build.gradle.kts" },
-		-- Single-module projects
+		-- Java build files.
 		{
-			"build.xml", -- Ant
-			"pom.xml", -- Maven
-			"settings.gradle", -- Gradle
-			"settings.gradle.kts", -- Gradle
+			"gradlew",
+			"mvnw",
+			"build.gradle",
+			"build.gradle.kts",
+			"pom.xml",
+			"settings.gradle",
+			"settings.gradle.kts",
+			"build.xml",
 		},
+		-- Project markers.
+		{ ".idea", ".gitignore", ".git" },
 	},
 	filetypes = { "java" },
+	settings = {
+		java = {
+			format = {
+				settings = {
+					url = vim.fn.expand("~/.config/nvim/codestyles/google-java-codestyle.xml"),
+				},
+			},
+		},
+	},
 }

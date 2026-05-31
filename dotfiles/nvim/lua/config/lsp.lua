@@ -6,6 +6,7 @@ vim.lsp.enable({
 	"tsserver",
 	"gopls",
 	"dockerls",
+	"jdtls",
 })
 
 vim.diagnostic.config({

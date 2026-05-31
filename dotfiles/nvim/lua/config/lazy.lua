@@ -1,7 +1,8 @@
 ---@diagnostic disable: undefined-field
 
--- install lazy if not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+-- Install lazy.nvim if missing.
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
 	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
@@ -15,12 +16,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		os.exit(1)
 	end
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	spec = { { import = "plugins" } }, -- import from ./lua/plugins
+	spec = { { import = "plugins" } },
 	checker = { enabled = true }, -- auto check for plugin updates
-	performance = { -- disable unused plugins
+	performance = {
+		-- disable unused plugins
 		rtp = {
 			disabled_plugins = {
 				"gzip",

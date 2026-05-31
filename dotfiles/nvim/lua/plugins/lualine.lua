@@ -1,13 +1,5 @@
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		config = function()
-			vim.cmd("colorscheme catppuccin")
-		end,
-	},
-	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "kyazdani42/nvim-web-devicons" },
 		config = function()
@@ -32,12 +24,7 @@ return {
 				sections = {
 					lualine_a = { "mode" },
 					lualine_b = { "branch", "diff", "diagnostics" },
-					lualine_c = {
-						function()
-							return require("auto-session.lib").current_session_name(true)
-						end,
-						"filename",
-					},
+					lualine_c = { "filename" },
 					lualine_x = { "encoding", "filetype" },
 					lualine_y = { "progress" },
 					lualine_z = { "location" },
@@ -47,13 +34,6 @@ return {
 				inactive_winbar = {},
 				extensions = {},
 			})
-		end,
-	},
-	-- centre buffer
-	{
-		"shortcuts/no-neck-pain.nvim",
-		config = function()
-			vim.keymap.set("n", "<leader>cc", "<CMD>NoNeckPain<CR>")
 		end,
 	},
 }

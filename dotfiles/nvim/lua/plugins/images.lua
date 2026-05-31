@@ -42,6 +42,9 @@ return {
 	{
 		"HakonHarnes/img-clip.nvim",
 		event = "VeryLazy",
+		keys = {
+			{ "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard", ft = "markdown" },
+		},
 		opts = {
 			dir_path = obsidian_root_path .. "/obsidian_attachments",
 			file_name = "Pasted Image %Y%m%d%H%M%S",
@@ -51,9 +54,6 @@ return {
 				markdown = {
 					template = "![[$FILE_NAME]]",
 				},
-			},
-			keys = {
-				{ "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
 			},
 		},
 	},

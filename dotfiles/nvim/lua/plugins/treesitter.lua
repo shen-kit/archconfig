@@ -28,7 +28,7 @@ return {
 			auto_install = true, -- for missing parsers
 			highlight = {
 				enable = true,
-				-- disable treesitter for files over 256MB as it gets slow
+				-- disable treesitter for files over 256KB as it gets slow
 				disable = function(_, bufnr)
 					local buf_name = vim.api.nvim_buf_get_name(bufnr)
 					local file_size = vim.api.nvim_call_function("getfsize", { buf_name })

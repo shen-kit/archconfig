@@ -3,7 +3,7 @@ local finders = require("telescope.finders")
 local make_entry = require("telescope.make_entry")
 local conf = require("telescope.config").values
 local sorters = require("telescope.sorters")
-M = {}
+local M = {}
 
 M.run = function(opts)
 	opts = opts or {}

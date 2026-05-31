@@ -39,9 +39,11 @@ return {
 			map("n", "<leader>b", t.buffers) -- buffers
 			map("n", "fh", t.help_tags) -- help
 			map("n", "<leader>fp", t.resume) -- previous picker
+
 			-- live multi-grep
 			local multigrep = require("config.telescope.multigrep")
 			map("n", "<leader>fg", multigrep.run)
+
 			-- nvim config files
 			map("n", "<leader>fn", function()
 				t.find_files({ cwd = vim.fn.stdpath("config") })
