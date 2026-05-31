@@ -1,43 +1,20 @@
-# wezterm
-if ! [[ "$PATH" =~ "/usr/bin/wezterm-gui:" ]]
-then
-  PATH="/usr/bin/wezterm-gui:$PATH"
-fi
+# ========== PATH ==========
 
 # user bin
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-  PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
+path_prepend_once "$HOME/bin"
+path_prepend_once "$HOME/.local/bin"
 
 # custom bash scripts
-if ! [[ "$PATH" =~ "$HOME/.bashscripts:" ]]
-then
-  PATH="$HOME/.bashscripts:$PATH"
-fi
+path_prepend_once "$HOME/.bashscripts"
 
 # npm
-if ! [[ "$PATH" =~ "$HOME/.local/share/npm/bin:" ]]
-then
-  PATH="$HOME/.local/share/npm/bin:$PATH"
-fi
+path_prepend_once "$HOME/.local/share/npm/bin"
 
 # go
-if ! [[ "$PATH" =~ "/usr/local/go/bin:$HOME/dev/.go/bin:" ]]
-then
-  PATH="/usr/local/go/bin:$HOME/dev/.go/bin:$PATH"
-fi
-
-# # ruby gems
-# if ! [[ "$PATH" =~ "/home/shenkit/.local/share/gem/ruby/3.4.0/bin" ]]
-# then
-#   PATH="/home/shenkit/.local/share/gem/ruby/3.4.0/bin:$PATH"
-# fi
+path_prepend_once "$HOME/dev/.go/bin"
+path_prepend_once /usr/local/go/bin
 
 # cargo binaries
-if ! [[ "$PATH" =~ "/home/shenkit/.cargo/bin" ]]
-then
-  PATH="/home/shenkit/.cargo/bin:$PATH"
-fi
+path_prepend_once /home/shenkit/.cargo/bin
 
 export PATH

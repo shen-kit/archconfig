@@ -1,6 +1,6 @@
 # custom config from ~/.config/zsh
-if [ -d ~/.config/zsh ]; then 
-	for rc in ~/.config/zsh/*; do
+if [ -d ~/.config/zsh ]; then
+	for rc in ~/.config/zsh/*.zshrc(N); do
 		if [ -f "$rc" ]; then
 			. "$rc"
 		fi
@@ -27,8 +27,15 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 
 # load completions
-autoload -U compinit
-compinit
+autoload -Uz compinit
+ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+mkdir -p -- "${ZSH_COMPDUMP:h}"
+if [[ ! -s "$ZSH_COMPDUMP" || -n "$(find "$ZSH_COMPDUMP" -mmin +1440 -print -quit 2>/dev/null)" ]]; then
+  compinit -d "$ZSH_COMPDUMP"
+else
+  compinit -C -d "$ZSH_COMPDUMP"
+fi
+unset ZSH_COMPDUMP
 zinit cdreplay -q # only call compinit once, startup gains
 
 # ctrl x>e to edit current command in $EDITOR
@@ -41,5 +48,5 @@ eval "$(keychain --eval --quick --quiet)"
 
 # start programs required at end of zshrc
 eval "$(direnv hook zsh)"
-eval "$(zoxide init zsh)"
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

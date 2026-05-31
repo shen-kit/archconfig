@@ -1,4 +1,4 @@
-alias obsidian-upload="rclone sync ~/gDrive/1_obsidian/ gdrive:1_obsidian"
+# ========== RCLONE ==========
 
 # status
 alias rs="tail -5 ~/.cache/rclone/rclone.log" # most recent status update

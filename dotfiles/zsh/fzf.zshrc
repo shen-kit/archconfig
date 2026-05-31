@@ -1,4 +1,6 @@
-# FZF mappings and options
+# ========== FZF ==========
+
+# mappings and options
 [ -f /usr/share/fzf/shell/key-bindings.bash ] && source /usr/share/fzf/shell/key-bindings.bash
 
 # default use ripgrep instead of find, respect .gitignore and include hidden files
