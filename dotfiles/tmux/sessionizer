@@ -30,13 +30,13 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+selected_name=$(basename -- "$selected" | sed 's/[^[:alnum:]_-]/_/g')
 # avoid dangerous names like 'bash' or 'nvim'
 sanitised_name="_$selected_name"
-tmux_running=$(pgrep tmux)
+tmux_running=$(pgrep -x tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $sanitised_name -c $selected
+    tmux new-session -s "$sanitised_name" -c "$selected"
     exit 0
 fi
 
@@ -46,4 +46,4 @@ if ! tmux has-session -t="$sanitised_name" 2>/dev/null; then
     tmux new-window -t "$sanitised_name" -n "zsh" -c "$selected" "zsh"
     tmux select-window -t "$sanitised_name:nvim"
 fi
-tmux switch-client -t $sanitised_name
+tmux switch-client -t "$sanitised_name"
