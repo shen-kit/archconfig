@@ -88,6 +88,26 @@ alias lg="lazygit"
 alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto)  %D%n%s%n'"
 alias glo="git log --oneline --graph"
 
+# ========== PACMAN ==========
+
+if (( $+commands[pacman] )); then
+    alias paci="sudo pacman -S"                     # install package
+    alias pacu="sudo pacman -Syu"                   # full system upgrade
+    alias pacr="sudo pacman -Rns"                   # remove package + deps + config backups
+    alias pacorphans="pacman -Qtdq"                 # orphaned packages
+    alias paccleancache="sudo pacman -Sc"           # remove old package cache
+
+    function pacro() {                              # remove all orphaned packages
+        local orphans
+        orphans=(${(f)"$(pacman -Qtdq 2>/dev/null)"})
+        if (( ${#orphans[@]} )); then
+            sudo pacman -Rns -- "${orphans[@]}"
+        else
+            echo "No orphaned packages."
+        fi
+    }
+fi
+
 # ========== MISC. ==========
 
 alias ntfy="notify-send"
