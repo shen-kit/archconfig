@@ -14,7 +14,6 @@ return {
 				workspaces = {
 					{ name = "personal", path = "~/syncthing/1_notes/" },
 				},
-				completion = { blink = true, nvim_cmp = false },
 				frontmatter = { enabled = false },
 				wiki_link_func = require("obsidian.builtin").wiki_link_id_prefix,
 				link = { style = "wiki" },
