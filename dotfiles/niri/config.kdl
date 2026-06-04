@@ -113,7 +113,7 @@ binds {
 
     // applications
     Mod+Return        { spawn "ghostty"; }
-    Mod+Space         { spawn "fuzzel"; }
+    Mod+Space repeat=false { spawn "~/.config/niri/tweaks/toggle_fuzzel.sh"; }
     Mod+Shift+P       { spawn "~/.bashscripts/fuzzel-pass"; }
     Mod+Semicolon     { spawn "~/.bashscripts/fuzzel-emoji-picker"; }
     Mod+N             { spawn "obsidian"; }
