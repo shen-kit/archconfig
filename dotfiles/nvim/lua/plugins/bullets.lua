@@ -2,6 +2,9 @@ local function map_markdown_keymaps(bufnr)
 	local map = vim.keymap.set
 	local opts = { buffer = bufnr }
 
+	-- keep <C-i> functionality
+	map("n", "<C-i>", "<C-i>")
+
 	-- continuation
 	map("i", "<CR>", "<CMD>InsertNewBullet<CR>", opts)
 	map("n", "o", "<CMD>InsertNewBullet<CR>", opts)
