@@ -1,53 +1,53 @@
 return {
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			-- faster fzf
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		},
-		config = function()
-			require("telescope").setup({
-				defaults = require("telescope.themes").get_ivy({
-					layout_config = {
-						height = 0.8,
-						horizontal = { width = 0.95 }, -- doesn't apply to ivy theme
-					},
-					mappings = {
-						n = {
-							["d"] = require("telescope.actions").delete_buffer,
-							["q"] = require("telescope.actions").close,
-						},
-					},
-				}),
-				-- required for fzf-native
-				extensions = {
-					fzf = {
-						override_generic_sorter = true,
-						override_file_sorter = true,
-						case_mode = "smart_case",
-					},
-				},
-			})
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      -- faster fzf
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    },
+    config = function()
+      require('telescope').setup({
+        defaults = require('telescope.themes').get_ivy({
+          layout_config = {
+            height = 0.8,
+            horizontal = { width = 0.95 }, -- doesn't apply to ivy theme
+          },
+          mappings = {
+            n = {
+              ['d'] = require('telescope.actions').delete_buffer,
+              ['q'] = require('telescope.actions').close,
+            },
+          },
+        }),
+        -- required for fzf-native
+        extensions = {
+          fzf = {
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = 'smart_case',
+          },
+        },
+      })
 
-			require("telescope").load_extension("fzf") -- required for fzf-native
+      require('telescope').load_extension('fzf') -- required for fzf-native
 
-			local map = vim.keymap.set
-			local t = require("telescope.builtin")
+      local map = vim.keymap.set
+      local t = require('telescope.builtin')
 
-			map("n", "<leader>fa", t.find_files) -- files in cwd (respect .gitignore)
-			map("n", "<leader>b", t.buffers) -- buffers
-			map("n", "fh", t.help_tags) -- help
-			map("n", "<leader>fp", t.resume) -- previous picker
+      map('n', '<leader>fa', t.find_files) -- files in cwd (respect .gitignore)
+      map('n', '<leader>b', t.buffers) -- buffers
+      map('n', 'fh', t.help_tags) -- help
+      map('n', '<leader>fp', t.resume) -- previous picker
 
-			-- live multi-grep
-			local multigrep = require("config.telescope.multigrep")
-			map("n", "<leader>fg", multigrep.run)
+      -- live multi-grep
+      local multigrep = require('config.telescope.multigrep')
+      map('n', '<leader>fg', multigrep.run)
 
-			-- nvim config files
-			map("n", "<leader>fn", function()
-				t.find_files({ cwd = vim.fn.stdpath("config") })
-			end)
-		end,
-	},
+      -- nvim config files
+      map('n', '<leader>fn', function()
+        t.find_files({ cwd = vim.fn.stdpath('config') })
+      end)
+    end,
+  },
 }
