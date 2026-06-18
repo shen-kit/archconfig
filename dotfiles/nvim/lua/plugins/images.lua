@@ -1,4 +1,5 @@
-local obsidian_root_path = '/home/shenkit/gDrive/1_obsidian'
+local obsidian_root_path = '/home/shenkit/syncthing/1_notes/'
+local obsidian_assets_dir = 'obsidian_attachments'
 
 return {
   {
@@ -14,10 +15,8 @@ return {
             max_height_window_percentage = 80,
             -- images in obsidian vault in absolute path
             resolve_image_path = function(document_path, image_path, fallback)
-              local working_dir = vim.fn.getcwd()
-
               -- default behaviour if not in obsidian vault
-              if not working_dir:find(obsidian_root_path) then
+              if not document_path:find(obsidian_root_path, 1, true) then
                 return fallback(document_path, image_path)
               end
 
@@ -25,8 +24,7 @@ return {
               if image_path:find('|') then
                 image_path = vim.split(image_path, '|')[1]
               end
-              local assets_dir = 'obsidian_attachments'
-              local result = string.format('%s/%s/%s', obsidian_root_path, assets_dir, image_path)
+              local result = string.format('%s/%s/%s', obsidian_root_path, obsidian_assets_dir, image_path)
               return result
             end,
           },
@@ -46,7 +44,7 @@ return {
       { '<leader>p', '<cmd>PasteImage<cr>', desc = 'Paste image from system clipboard', ft = 'markdown' },
     },
     opts = {
-      dir_path = obsidian_root_path .. '/obsidian_attachments',
+      dir_path = string.format('%s/%s', obsidian_root_path, obsidian_assets_dir),
       file_name = 'Pasted Image %Y%m%d%H%M%S',
       use_absolute_path = true,
       prompt_for_file_name = false,
