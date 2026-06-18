@@ -11,7 +11,7 @@ else
   notify-send "Rclone Download" "download starting"
   echo -e "download starting: $(date +'%H:%M, %d-%m-%y')\n" > $LOGFILE
 
-  rclone sync gdrive: $HOME/gDrive/ --log-file $LOGFILE
+  rclone sync --exclude-from $HOME/.config/rclone/exclude.txt gdrive: $HOME/gDrive/ --log-file $LOGFILE
 
   touch "$FILE"
   echo -e "download finished: $(date +'%H:%M, %d-%m-%y')\n" >> $LOGFILE
