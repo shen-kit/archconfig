@@ -3,34 +3,7 @@
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(
-    {
-      echo "$HOME/archconfig"
-
-      fd . "$HOME/archconfig/dotfiles/" \
-        -t d \
-        --min-depth 1 \
-        --max-depth 1
-
-      fd '^\.git$' "$HOME/dev" \
-        -H \
-        -t d \
-        --prune \
-        --min-depth 3 \
-        --max-depth 5 |
-        sed -E 's|/\.git/?$||'
-
-      fd '^\.proj$' "$HOME/dev" \
-        -H \
-        -t f \
-        --min-depth 3 \
-        --max-depth 5 \
-        -X dirname
-      } |
-        sed "s|$HOME|~|" |
-        fzf --cycle |
-        sed "s|~|$HOME|"
-      )
+  selected=$("$(dirname "$0")/sessionizer-select-project")
 fi
 
 if [[ -z $selected ]]; then

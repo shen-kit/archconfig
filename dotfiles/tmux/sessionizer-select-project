@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Shared project selection for sessionizer / sessionizer-edit.
+# Prints the selected project absolute path to stdout; empty if cancelled.
+
+{
+  echo "$HOME/archconfig"
+
+  fd . "$HOME/archconfig/dotfiles/" \
+    -t d \
+    --min-depth 1 \
+    --max-depth 1
+
+  fd '^\.git$' "$HOME/dev" \
+    -H \
+    -t d \
+    --prune \
+    --min-depth 3 \
+    --max-depth 5 |
+    sed -E 's|/\.git/?$||'
+
+  fd '^\.proj$' "$HOME/dev" \
+    -H \
+    -t f \
+    --min-depth 3 \
+    --max-depth 5 \
+    -X dirname
+} |
+  sed "s|$HOME|~|" |
+  fzf --cycle |
+  sed "s|~|$HOME|"
