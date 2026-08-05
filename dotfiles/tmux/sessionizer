@@ -19,9 +19,16 @@ else
         --min-depth 3 \
         --max-depth 5 |
         sed -E 's|/\.git/?$||'
+
+      fd '^\.proj$' "$HOME/dev" \
+        -H \
+        -t f \
+        --min-depth 3 \
+        --max-depth 5 \
+        -X dirname
       } |
         sed "s|$HOME|~|" |
-        fzf |
+        fzf --cycle |
         sed "s|~|$HOME|"
       )
 fi
@@ -41,7 +48,8 @@ if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
 fi
 
 if ! tmux has-session -t="$sanitised_name" 2>/dev/null; then
-    tmux new-session -d -s "$sanitised_name" -n "git" -c "$selected" "zsh -c 'lazygit; exec zsh'"
+    tmux new-session -d -s "$sanitised_name" -n "pi" -c "$selected" "zsh -c 'pi; exec zsh'"
+    tmux new-window -t "$sanitised_name" -n "git" -c "$selected" "zsh -c 'lazygit; exec zsh'"
     tmux new-window -t "$sanitised_name" -n "nvim" -c "$selected" "zsh -c 'nvim .; exec zsh'"
     tmux new-window -t "$sanitised_name" -n "zsh" -c "$selected" "zsh"
     tmux select-window -t "$sanitised_name:nvim"

@@ -7,7 +7,7 @@ if [[ -z "$sessions" ]]; then
     exit 0
 fi
 
-selected=$(echo "$sessions" | fzf --prompt="Switch to tmux session: ")
+selected=$(echo "$sessions" | fzf --cycle --prompt="Switch to tmux session: ")
 
 [[ -z "$selected" ]] && exit 0
 

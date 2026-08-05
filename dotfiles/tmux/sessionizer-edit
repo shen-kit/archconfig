@@ -19,9 +19,16 @@ else
         --min-depth 3 \
         --max-depth 5 |
         sed -E 's|/\.git/?$||'
+
+      fd '^\.proj$' "$HOME/dev" \
+        -H \
+        -t f \
+        --min-depth 3 \
+        --max-depth 5 \
+        -X dirname
       } |
         sed "s|$HOME|~|" |
-        fzf |
+        fzf --cycle |
         sed "s|~|$HOME|"
       )
 fi
