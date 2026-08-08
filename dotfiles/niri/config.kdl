@@ -1,6 +1,6 @@
 // https://yalter.github.io/niri/Configuration:-Introduction
 
-spawn-at-startup "./auto-wlsunset.sh"
+spawn-at-startup "noctalia"
 spawn-sh-at-startup "python ~/.config/niri/tweaks/tile_to_n.py -n 2"
 
 input {
@@ -95,6 +95,13 @@ recent-windows {
 prefer-no-csd
 
 window-rule {
+    match app-id="dev.noctalia.Noctalia"
+    open-floating true
+    default-column-width { fixed 1080; }
+    default-window-height { fixed 920; }
+}
+
+window-rule {
     match app-id=r#"ghostty"#
     opacity 0.95
     draw-border-with-background false
@@ -106,10 +113,9 @@ window-rule {
 }
 
 binds {
-    // desktop & dms
-    Mod+Shift+Q { spawn-sh "dms ipc powermenu toggle"; }
+    // desktop
+    Mod+Shift+Q { spawn-sh "noctalia msg panel-toggle session"; }
     Mod+Q { quit; }
-    Mod+V { spawn-sh "dms ipc clipboard toggle"; }
 
     // applications
     Mod+Return        { spawn "ghostty"; }
@@ -244,7 +250,7 @@ binds {
 }
 
 // null disables saving to disk
-screenshot-path "~/screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
+screenshot-path "~/Screenshot_%Y-%m-%d_%H-%M-%S.png"
 
 hotkey-overlay {
     skip-at-startup
@@ -252,5 +258,7 @@ hotkey-overlay {
 
 animations { }
 
-
-include "dms/outputs.kdl"
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}

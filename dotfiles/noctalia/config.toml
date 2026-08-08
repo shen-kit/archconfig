@@ -1,0 +1,161 @@
+[bar.default]
+centre = [ "clock" ]
+enabled = true
+end = [ "tray", "notifications", "volume", "bluetooth", "network", "battery" ]
+margin_ends = 0
+position = "left"
+radius = 0
+reserve_space = true
+scale = 0.95
+shadow = false
+start = [ "workspaces" ]
+thickness = 28
+widget_spacing = 12
+
+    [bar.default.dead_zone.actions]
+    scroll_down = "workspace-switch next"
+    scroll_up = "workspace-switch prev"
+
+[battery]
+warning_threshold = 25
+
+[calendar.account.personal_google]
+color = "primary"
+name = "personal"
+type = "google"
+
+[control_center]
+hidden_tabs = [ "audio", "monitor", "power", "network", "bluetooth", "weather", "calendar", "notifications" ]
+show_shortcut_labels = false
+sidebar_section = "none"
+width = 600
+
+    [control_center.calendar]
+    show_events_card = false
+
+    [[control_center.shortcuts]]
+    type = "wifi"
+
+    [[control_center.shortcuts]]
+    type = "bluetooth"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "nightlight"
+
+    [[control_center.shortcuts]]
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "session"
+
+[desktop_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000001" ]
+
+    [desktop_widgets.widget.clock1]
+    box_height = 135
+    box_width = 355
+    cx = 960.0
+    cy = 180
+    output = "DP-2"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.clock1.settings]
+        background = false
+        center_text = true
+        clock_style = "digital"
+        font_family = "Monaspace Krypton Light"
+
+[location]
+auto_locate = true
+
+[nightlight]
+enabled = true
+
+[notification]
+background_opacity = 1
+history_retention_hours = 12
+position = "bottom_left"
+
+[osd]
+background_opacity = 1
+offset_y = 48
+position = "bottom_center"
+
+[[plugins.source]]
+enabled = false
+kind = "git"
+location = "https://github.com/noctalia-dev/official-plugins"
+name = "official"
+
+[[plugins.source]]
+enabled = false
+kind = "git"
+location = "https://github.com/noctalia-dev/community-plugins"
+name = "community"
+
+[shell]
+app_icon_color = "error"
+clipboard_enabled = false
+input_borders = false
+popup_borders = false
+
+    [shell.animation]
+    speed = 1.5
+
+    [shell.panel]
+    control_center_placement = "floating"
+    open_near_click_control_center = true
+    session_placement = "floating"
+    session_position = "center"
+
+    [shell.session]
+    show_shortcuts = false
+
+        [[shell.session.actions]]
+        action = "lock"
+        shortcut = "l"
+
+        [[shell.session.actions]]
+        action = "reboot"
+        shortcut = "r"
+
+        [[shell.session.actions]]
+        action = "shutdown"
+        shortcut = "s"
+        variant = "destructive"
+
+[system.monitor]
+enabled = false
+
+[theme]
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "soft"
+
+    [theme.templates]
+    enable_builtin_templates = false
+    enable_community_templates = false
+
+[wallpaper]
+directory = "/home/shenkit/archconfig/backgrounds"
+
+    [wallpaper.default]
+    path = "/home/shenkit/archconfig/backgrounds/gainz_crown.jpg"
+
+    [wallpaper.last]
+    path = "/home/shenkit/archconfig/backgrounds/gainz_crown.jpg"
+
+[weather]
+enabled = false
+
+[widget.network]
+show_label = false
+
+[widget.workspaces]
+style = "minimal"
