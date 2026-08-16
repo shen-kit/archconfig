@@ -19,6 +19,7 @@ export LESS=R
 export RCLONE_VERBOSE=0
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export OPENSPEC_TELEMETRY=0
+export FZF_DEFAULT_OPTS="--cycle"
 
 # gui theme
 export GTK_THEME=Adwaita:dark
@@ -28,20 +29,22 @@ export QT_STYLE_OVERRIDE=Adwaita-Dark
 # dev env
 export GOPATH="$HOME/.local/share/go"
 export GOMODCACHE="$HOME/.cache/go-modcache"
-export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_HOME="$HOME/dev/android-sdk"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 
 # tool paths
-_path_prepend_once "$HOME/dev/flutter/bin"
-_path_prepend_once "$ANDROID_HOME/platform-tools"
-_path_prepend_once "$ANDROID_HOME/cmdline-tools/latest/bin"
 _path_prepend_once "$HOME/bin"
 _path_prepend_once "$HOME/.local/bin"
 _path_prepend_once "$HOME/.bashscripts"
+# langauge-specific paths
 _path_prepend_once "$HOME/.local/share/npm/bin"
 _path_prepend_once "$HOME/dev/.go/bin"
 _path_prepend_once "/usr/local/go/bin"
 _path_prepend_once "$HOME/.cargo/bin"
+# mobile dev
+_path_prepend_once "$HOME/dev/flutter/bin"
+_path_prepend_once "$ANDROID_HOME/platform-tools"
+_path_prepend_once "$ANDROID_HOME/cmdline-tools/latest/bin"
 
 export PATH
 unfunction _path_prepend_once
