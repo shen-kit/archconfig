@@ -6,13 +6,13 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     lazy = true,
     event = {
-      'BufReadPre ' .. vim.fn.expand('~') .. '/syncthing/1_notes/*.md',
-      'BufNewFile ' .. vim.fn.expand('~') .. '/syncthing/1_notes/*.md',
+      'BufReadPre ' .. vim.fn.expand('~') .. '/obsidian/*.md',
+      'BufNewFile ' .. vim.fn.expand('~') .. '/obsidian/*.md',
     },
     config = function()
       require('obsidian').setup({
         workspaces = {
-          { name = 'personal', path = '~/syncthing/1_notes/' },
+          { name = 'personal', path = '~/obsidian/' },
         },
         frontmatter = { enabled = false },
         wiki_link_func = require('obsidian.builtin').wiki_link_id_prefix,
@@ -25,6 +25,9 @@ return {
             map({ 'i', 'n' }, '<C-S-O>', '<CMD>Obsidian quick_switch<CR>', { buffer = note.bufnr })
             map({ 'n' }, 'gf', '<CMD>Obsidian follow_link<CR>', { buffer = note.bufnr })
           end,
+        },
+        checkbox = {
+          order = { ' ', 'x', '' },
         },
         ui = { enable = false }, -- let render-markdown handle UI
         legacy_commands = false,

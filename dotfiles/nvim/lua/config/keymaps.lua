@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 
-map('i', 'jk', '<ESC>')
 map('n', '<C-i>', '<C-i>')
 
 -- Diagnostics / quickfix / loclist

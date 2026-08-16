@@ -19,6 +19,8 @@ opt.smartindent = true
 -- Folds
 opt.foldlevel = 99
 opt.foldminlines = 1
+opt.foldmethod = 'expr'
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 -- Search
 opt.ignorecase = true
