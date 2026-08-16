@@ -1,1 +1,2 @@
-~/.bashscripts/rclone-download &
+
+. "$HOME/.atuin/bin/env"
