@@ -3,7 +3,7 @@ local obsidian_assets_dir = 'obsidian_attachments'
 
 return {
   {
-    "folke/snacks.nvim",
+    'folke/snacks.nvim',
     priority = 1000,
     lazy = false,
     opts = {
@@ -14,7 +14,7 @@ return {
           inline = true,
           float = true,
           conceal = function(_, type)
-            return type == "math"
+            return type == 'math'
           end,
         },
         math = {
@@ -37,7 +37,12 @@ return {
       },
     },
     keys = {
-      {"<leader>sh", function() require("snacks").image.hover() end}
-    }
+      {
+        '<leader>sh',
+        function()
+          require('snacks').image.hover()
+        end,
+      },
+    },
   },
 }

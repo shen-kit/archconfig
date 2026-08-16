@@ -39,24 +39,10 @@ return {
       })
 
       -- keymaps
-      local foldLevel = 99
-
-      vim.keymap.set('n', 'zR', function()
-        foldLevel = 99
-        require('ufo').closeFoldsWith(foldLevel)
-      end)
-      vim.keymap.set('n', 'zM', function()
-        foldLevel = 0
-        require('ufo').closeFoldsWith(foldLevel)
-      end)
-      vim.keymap.set('n', 'zr', function()
-        foldLevel = foldLevel + 1
-        require('ufo').closeFoldsWith(foldLevel)
-      end)
-      vim.keymap.set('n', 'zm', function()
-        foldLevel = foldLevel - 1
-        require('ufo').closeFoldsWith(foldLevel)
-      end)
+      vim.keymap.set('n', 'zR', require('ufo').closeAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zr', require('ufo').closeFoldsWith)
+      vim.keymap.set('n', 'zm', require('ufo').openFoldsExceptKinds)
       vim.keymap.set('n', 'zk', function()
         local winid = require('ufo').peekFoldedLinesUnderCursor()
         if not winid then

@@ -6,4 +6,4 @@ map('i', '<C-b>', '**', opts)
 map('v', '<C-b>', 's****<ESC>hP', opts) -- using mini.surround
 
 -- ===== OPTIONS =====
-vim.opt.conceallevel = 2
+vim.wo.conceallevel = 2
