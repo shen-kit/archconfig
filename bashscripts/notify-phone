@@ -1,7 +1,11 @@
 #!/bin/sh
 
-curl -s -X POST https://api.telegram.org/bot7593705436:AAFoOb0rtnBlbbgBsgx5zLBexGCbdVcx57o/sendMessage \
-  -d chat_id="5964916686" \
-  -d text="$1"
+# telegram
+#
+# curl -s -X POST https://api.telegram.org/bot7593705436:AAFoOb0rtnBlbbgBsgx5zLBexGCbdVcx57o/sendMessage \
+#   -d chat_id="5964916686" \
+#   -d text="$1"
   
-
+# ntfy.sh
+#
+curl -d "$1" ntfy.sh/shenkit108-linux-notifications
