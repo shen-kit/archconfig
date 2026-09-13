@@ -10,18 +10,23 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
+script_dir=$(cd -- "$(dirname -- "$0")" && pwd)
+project_shell=$(printf '%q' "$script_dir/sessionizer-project-shell")
+project_dir=$(printf '%q' "$selected")
+project_cmd="$project_shell" "$project_dir"
+
 selected_name=$(basename -- "$selected" | sed 's/[^[:alnum:]_-]/_/g')
 # avoid dangerous names like 'bash' or 'nvim'
 sanitised_name="_$selected_name"
 tmux_running=$(pgrep -x tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s "$sanitised_name" -c "$selected"
+    tmux new-session -s "$sanitised_name" -c "$selected" "$project_shell $project_dir"
     exit 0
 fi
 
 if ! tmux has-session -t="$sanitised_name" 2>/dev/null; then
-    tmux new-session -d -s "$sanitised_name" -n "nvim" -c "$selected" "zsh -c 'nvim .'"
+    tmux new-session -d -s "$sanitised_name" -n "nvim" -c "$selected" "$project_cmd nvim ."
     tmux select-window -t "$sanitised_name:nvim"
 fi
 tmux switch-client -t "$sanitised_name"

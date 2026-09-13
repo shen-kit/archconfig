@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Run project startup script in same shell that owns project terminal.
+
+set -u
+
+project=$1
+shift
+
+if [[ -f "$project/.proj" ]]; then
+  # Source, rather than execute, so cd/export changes survive.
+  source "$project/.proj"
+fi
+
+if (($#)); then
+  "$@"
+fi
+
+exec zsh
