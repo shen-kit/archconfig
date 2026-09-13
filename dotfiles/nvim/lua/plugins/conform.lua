@@ -12,6 +12,7 @@ return {
         typescriptreact = { 'prettierd' },
         c = { 'clang-format' },
         go = { 'gofmt' },
+        python = { 'ruff_fix', 'ruff_format', 'ruff_organise_imports' },
       },
       default_format_opts = {
         lsp_format = 'fallback',
