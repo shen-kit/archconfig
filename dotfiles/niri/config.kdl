@@ -3,6 +3,8 @@
 spawn-at-startup "noctalia"
 spawn-sh-at-startup "python ~/.config/niri/tweaks/tile_to_n.py -n 2"
 
+spawn-at-startup "sh" "-c" "ln -sf \"$NIRI_SOCKET\" \"/run/user/$(id -u)/niri.sock\""
+
 environment {
   SSH_AUTH_SOCK "/run/user/1000/ssh-agent.socket"
 }
