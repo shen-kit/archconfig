@@ -42,19 +42,17 @@ output "DP-3" {
     position x=3840 y=0
 }
 
-
 layout {
     gaps 4
     center-focused-column "never"
     always-center-single-column
 
     preset-column-widths {
-        proportion 0.5
         proportion 0.3333333
+        proportion 0.5
         proportion 0.6666666
     }
 
-    // You can change the default width of the new windows.
     default-column-width {
         proportion 0.5
     }
@@ -71,25 +69,10 @@ layout {
     shadow {}
 }
 
-recent-windows {
-    highlight {
-        active-color "#999999ff"
-        urgent-color "#ff9999ff"
-        padding 16
-        corner-radius 8
-    }
-
-    previews {
-        max-height 500
-        max-scale 0.25
-    }
-
-    binds {
-        Alt+Tab         { next-window; }
-        Alt+Shift+Tab   { previous-window; }
-        Alt+grave       { next-window     filter="app-id"; }
-        Alt+Shift+grave { previous-window filter="app-id"; }
-    }
+gestures {
+  hot-corners {
+    off
+  }
 }
 
 prefer-no-csd
@@ -105,10 +88,20 @@ window-rule {
     match app-id=r#"ghostty"#
     opacity 0.95
     draw-border-with-background false
+    background-effect {
+      blur true
+      xray true // performance, caches blurred background
+    }
+}
+
+blur {
+  passes 1 // reduced for performance
+  offset 4
+  noise 0 // reduced for performance
 }
 
 window-rule {
-    geometry-corner-radius 4
+    geometry-corner-radius 8
     clip-to-geometry true
 }
 
@@ -167,10 +160,8 @@ binds {
     Mod+Ctrl+8          { move-window-to-workspace 8; }
     Mod+Ctrl+9          { move-window-to-workspace 9; }
 
-    Mod+BracketLeft     { consume-or-expel-window-left; }
-    Mod+BracketRight    { consume-or-expel-window-right; }
-    Mod+Comma           { consume-window-into-column; }
-    Mod+Period          { expel-window-from-column; }
+    Mod+Comma           { spawn-sh "niri msg action consume-or-expel-window-left && niri msg action move-window-up"; }
+    Mod+Period          { spawn-sh "niri msg action consume-or-expel-window-right && niri msg action move-window-up"; }
     Mod+W               { toggle-column-tabbed-display; }
 
     Mod+D               { switch-preset-column-width; }
@@ -186,7 +177,7 @@ binds {
     Mod+Shift+Minus     { set-window-height "-10%"; }
     Mod+Shift+Equal     { set-window-height "+10%"; }
 
-    Mod+Alt+Space       { toggle-window-floating; }
+    Mod+Ctrl+Space       { toggle-window-floating; }
     Mod+Shift+Space     { switch-focus-between-floating-and-tiling; }
 
     Print               { screenshot; }
