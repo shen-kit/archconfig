@@ -82,6 +82,11 @@ gestures {
 prefer-no-csd
 
 window-rule {
+    match app-id="Pinentry-gtk"
+    open-floating true
+}
+
+window-rule {
     match app-id="dev.noctalia.Noctalia"
     open-floating true
     default-column-width { fixed 1080; }

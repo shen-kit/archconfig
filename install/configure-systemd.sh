@@ -19,5 +19,8 @@ sudo cp -f ../keyd.conf /etc/keyd/default.conf
 sudo keyd reload
 
 log "Configuring gnome-keyring-daemon"
-systemctl --user enable --now gnome-keyring-daemon.service
 systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_SESSION
+
+log "Configuring systemd for SSH and GPG"
+systemctl --user enable --now ssh-agent.socket
+systemctl --user enable --now gpg-agent.socket

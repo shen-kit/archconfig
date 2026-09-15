@@ -39,7 +39,6 @@ PACMAN_PKGS=(
   power-profiles-daemon
   rclone
   sddm
-  keychain
   grub-btrfs
   gnome-keyring # needed for brave passwords
   libsecret
@@ -56,6 +55,7 @@ PACMAN_PKGS=(
   fuzzel
   brightnessctl
   wlsunset
+  pinentry
 
   # file managers & viewers
   thunar
