@@ -44,8 +44,6 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-eval "$(keychain --eval --quick --quiet)"
-
 # start programs required at end of zshrc
 eval "$(direnv hook zsh)"
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"

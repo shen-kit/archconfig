@@ -3,6 +3,10 @@
 spawn-at-startup "noctalia"
 spawn-sh-at-startup "python ~/.config/niri/tweaks/tile_to_n.py -n 2"
 
+environment {
+  SSH_AUTH_SOCK "/run/user/1000/ssh-agent.socket"
+}
+
 input {
     keyboard {
         xkb { }
